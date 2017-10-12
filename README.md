@@ -13,7 +13,12 @@ Below is a guide on how to take a copy of the latest game build from the 'releas
 - Java JRE 8
 - IntelliJ
 - Android Studio (Latest)
+
+**Optional**
 - LibGDX Setup app - get it [here](https://libgdx.badlogicgames.com/download.html)
 
-## Install
+## Setup
     
+Clone the 'release' branch latest build.
+
+Open the working directory in IntelliJ and Setup the Android SDK
