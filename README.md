@@ -22,7 +22,7 @@ steps in making a game from start to finish as well as understanding how to make
 
 # About the Game
 
-My game was to be a 2D RTS Game (I may move to 3D but no in LibGDX) themed in Space Warfare, I want to create quick
+My game will be a 2D RTS Game (I may move to 3D but not in LibGDX) themed in Space Warfare, I want to create quick
 paced battles that needs quick reactions to work straight from the start, removing elements like multi resources and 
 control points
 
@@ -79,6 +79,8 @@ upon. This will help build the game further
 
 - [ ] Build a factory model that will be used to produce ships
 - [ ] Make AI types for more adaptive game play (Aggressive, Defensive e.c.t)
+- [ ] Create or find someone to outsource art work for the game (Not sure what kind of style I want yet but I have a
+few ideas)
 
 **Stage 5 - Improvents and Explorable Features**
 
@@ -115,7 +117,8 @@ Below is a guide on how to take a copy of the latest game build from the 'releas
 **Optional**
 - LibGDX Setup app - get it [here](https://libgdx.badlogicgames.com/download.html)
 
-## Setup
+## Setup - Not complete (I myself haven't cloned my work from my source machine so I'm going through understanding the
+steps of cloning a gradle project)
     
 Clone the 'release' branch latest build.
 
