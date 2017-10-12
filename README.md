@@ -16,7 +16,7 @@ steps in making a game from start to finish as well as understanding how to make
 - Downloading the Current Build
     - Getting Started
     - Prerequisites
-    - Setup
+    - Setup (In Progress)
         - Guide to Setting up Android SDK
         - Guide to Setting up the Desktop Launcher
 
@@ -42,9 +42,35 @@ to use free assets and work on designs later (since I don't really do visual des
 
 ## My Twist(s)
 
+### Smart Squading
 
+I wanted to make something that I don't frequently see in RTS Games, while control groups and manually setting teams in
+any army is cool, I wanted to make it a bit more automated and follow a formation in design, this would be having a
+sort of structure to the units in an RTS somewhere similar to Ashes of the Singularity, where a large Capital unit can
+be in command and lead smaller units like Special and Grunt type units.
+
+This system wouldn't simply be something that help just group units but determine how they fight when not being managed
+by the user. If the squad consisted of basic grunt type units, they would play aggressive and use their speed and small
+size to their advantage while if teamed with a special type of unit they would aim to intercept and support on that
+special unit's target.
+
+What I expect is a system where a player can feel more focused in certain fights and has more freedom to leave a combat
+scene while the AI does the rest. Though I see this as possible a big aim with the mention of AI I have thought of
+ideas that may seem feasible and I want to try before looking away from this.
+
+### Minimalistic
+
+When I see some RTS Games though I do find micro managing fun sometime or longed out games I lose sight on many
+elements, I want to make my game have a simple path from start to finish. How? I'm not too sure but I would see
+ideas being the use of no resources to construct units, few unit types or no secondary objectives
 
 ## Inspiration and Original Concept
+
+### BOID
+![](http://vignette3.wikia.nocookie.net/steamtradingcards/images/e/e5/Boid_Logo.jpg/revision/latest?cb=20150401201235)
+
+BOID was a very large inspiration for wanting to make a strategy game, I came across this game while checking out some
+Indie Games at EGX 2014
 
 # Development
 
@@ -130,28 +156,28 @@ Use this guide if you haven't got an Android SDK Setup in IntelliJ
 ```
 1. Open the Project Structure and Locate the SDK Menu and at the top click the '+' then 'Android SDK'
 ```
-![alt](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/open_PS.png?raw=true)
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/open_PS.png?raw=true)
 ```
 2. Locate the 'Home Directory' of your SDK
 ```
 For Windows users this is normally located in you C:\Users\[Account Name]\AppData\Local\Android\sdk
 
-![alt](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Locate_Home_Directory.png?raw=true)
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Locate_Home_Directory.png?raw=true)
 ```
 3. At the Create New Android SDK dialog check that the Java SDK if your latest version and that the Build Target matches
 your Android API Version
 ```
-![alt](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Create_SDK.png?raw=true)
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Create_SDK.png?raw=true)
 ```
 4. Once done you should be fine with the Android SDK being added to your IntelliJ Project Strucute
 ```
-![alt](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Setup.png?raw=true)
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Setup.png?raw=true)
 ```
 5. Goto the modules tab and locate the android module
 
 6. On the right side of the menu set the Module SDK to the android SDK that you just added to your IntelliJ
 ```
-![alt](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Add%20to%20Module.png?raw=true)
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Add%20to%20Module.png?raw=true)
 
 
 ### Guide to setting up the Desktop Launcher
@@ -163,13 +189,13 @@ for running this on the desktop
 
 2. Select Edit Configurations
 ```
-![alt](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Config%20Launcher/open_config.png?raw=true)
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Config%20Launcher/open_config.png?raw=true)
 ```
 3. Click the '+' to create a new launch configuration
 
 4. Select 'Application' as the configuration type
 ```
-![alt](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Config%20Launcher/make_application_config.png?raw=true)
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Config%20Launcher/make_application_config.png?raw=true)
 ```
 5. Name the launch configuration Desktop (or something that makes it clear that its the desktop config)
 
@@ -179,7 +205,7 @@ for running this on the desktop
 
 8. Set the class path module to the desktop module
 ```
-![alt](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Config%20Launcher/configure_desktop_launcher.png?raw=true)
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Config%20Launcher/configure_desktop_launcher.png?raw=true)
 
 Once you've done that the launch configuration should appear where you oringally went to edit the configuration (Top Right)
 of the IDE (If it still says Android click the dropdown and select Desktop)
