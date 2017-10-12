@@ -70,7 +70,19 @@ ideas being the use of no resources to construct units, few unit types or no sec
 ![](http://vignette3.wikia.nocookie.net/steamtradingcards/images/e/e5/Boid_Logo.jpg/revision/latest?cb=20150401201235)
 
 BOID was a very large inspiration for wanting to make a strategy game, I came across this game while checking out some
-Indie Games at EGX 2014
+Indie Games at EGX 2013, I got hold of the game when it was released and saw its style of gameplay very unique and
+simple, so I wanted to look at that aspect from this game, all I saw was that this game felt a bit slow at times and
+hard to maneuver.
+
+### SolWars Original (Game Development Coursework Module)
+
+### Ashes of the Singularity
+![](http://cdn.edgecast.steamstatic.com/steam/apps/507490/header.jpg?t=1506015473)
+
+Ashes of the Singularity is a very large RTS Game made for long and sustained warfare, the use of managing large groups
+of armies under the flagship of a large dreadnought made me think of how making a structured army / platoon / squad
+would work to make synergy a more amazing aspect of an RTS game. This gave me the idea of 'smart squadding' and making
+more automated combat, to an extent
 
 # Development
 
