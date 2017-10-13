@@ -7,7 +7,12 @@ steps in making a game from start to finish as well as understanding how to make
 - About the Game
     - The Idea
     - My Twist(s)
+        - Smart Squadding
+        - Minimalistic
     - Inspiration and Original Concept
+        - BOID
+        - SolWars Original (Game Development Coursework Module)
+        - Ashes of the Singularity
 
 - Development
     - To-Do / Progress
@@ -76,6 +81,9 @@ hard to maneuver.
 
 ### SolWars Original (Game Development Coursework Module)
 
+**In Progress** - I am building my github.io where my code for this currently is so I'll talk about this part once I'm 
+finished
+
 ### Ashes of the Singularity
 ![](http://cdn.edgecast.steamstatic.com/steam/apps/507490/header.jpg?t=1506015473)
 
@@ -85,6 +93,8 @@ would work to make synergy a more amazing aspect of an RTS game. This gave me th
 more automated combat, to an extent
 
 # Development
+
+
 
 ## To-Do / Progress
 
@@ -155,12 +165,17 @@ Below is a guide on how to take a copy of the latest game build from the 'releas
 **Optional**
 - LibGDX Setup app - get it [here](https://libgdx.badlogicgames.com/download.html)
 
-## Setup - Not complete (I myself haven't cloned my work from my source machine so I'm going through understanding the
-steps of cloning a gradle project)
+## Setup - Not complete (I myself haven't cloned my work from my source machine so I'm going through understanding the steps of cloning a gradle project)
     
 Clone the 'release' branch latest build.
 
 Open the working directory in IntelliJ and Setup the Android SDK
+
+### Cloning Repo and Importing Project
+
+```
+1. Clone the repo from its latest 
+```
 
 ### Guide to setting up the Android SDK
 
@@ -191,7 +206,6 @@ your Android API Version
 ```
 ![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Add%20to%20Module.png?raw=true)
 
-
 ### Guide to setting up the Desktop Launcher
 
 So you can run the app on your machine as a desktop version and not an android version you need to configure a launcher 
@@ -219,6 +233,6 @@ for running this on the desktop
 ```
 ![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Config%20Launcher/configure_desktop_launcher.png?raw=true)
 
-Once you've done that the launch configuration should appear where you oringally went to edit the configuration (Top Right)
+Once you've done that the launch configuration should appear where you originally went to edit the configuration (Top Right)
 of the IDE (If it still says Android click the dropdown and select Desktop)
 
