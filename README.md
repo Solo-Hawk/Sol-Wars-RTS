@@ -165,8 +165,8 @@ Below is a guide on how to take a copy of the latest game build from the 'releas
 **Optional**
 - LibGDX Setup app - get it [here](https://libgdx.badlogicgames.com/download.html)
 
-## Setup - Not complete (I myself haven't cloned my work from my source machine so I'm going through understanding the steps of cloning a gradle project)
-    
+## Setup 
+
 Clone the 'release' branch latest build.
 
 Open the working directory in IntelliJ and Setup the Android SDK
@@ -174,9 +174,29 @@ Open the working directory in IntelliJ and Setup the Android SDK
 ### Cloning Repo and Importing Project
 
 ```
-1. Clone the repo from its latest 
+1. Clone the repo from release branch
 ```
 
+```
+2. Select File -> New -> Project from Exisitng Sources
+```
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Cloning%20the%20Repo%20and%20syncing%20gradle/Project_from_Existing_Sources.png?raw=true)
+
+```
+3. Locate the project's build.gradle file
+```
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Cloning%20the%20Repo%20and%20syncing%20gradle/Locate_Build_Gradle.png?raw=true)
+
+```
+4. Once you locate the file you should get a menu with a few config settings to go through, tick "Use auto-import" and 
+untick "Create seperate module per source set"
+```
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Cloning%20the%20Repo%20and%20syncing%20gradle/Import_Project.png?raw=true)
+
+```
+5. Once oyu have set the config you should get a menu showing all the module you can import, select all the modules
+```
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Cloning%20the%20Repo%20and%20syncing%20gradle/Import_Modules.png?raw=true)
 ### Guide to setting up the Android SDK
 
 Use this guide if you haven't got an Android SDK Setup in IntelliJ
