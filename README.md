@@ -1,4 +1,5 @@
 # Sol-Wars-RTS
+
 To learn and understand how to make a game I am learning LibGDX to make a 2D RTS Game as a way of learning both the 
 steps in making a game from start to finish as well as understanding how to make a simple AI to compliment my RTS game
 
@@ -47,7 +48,7 @@ to use free assets and work on designs later (since I don't really do visual des
 
 ## My Twist(s)
 
-### Smart Squading
+### Smart Squadding
 
 I wanted to make something that I don't frequently see in RTS Games, while control groups and manually setting teams in
 any army is cool, I wanted to make it a bit more automated and follow a formation in design, this would be having a
@@ -94,8 +95,6 @@ more automated combat, to an extent
 
 # Development
 
-
-
 ## To-Do / Progress
 
 Over the course of starting this project I've have gone through plenty of iterations of just starting to think how to
@@ -130,7 +129,7 @@ upon. This will help build the game further
 - [ ] Create or find someone to outsource art work for the game (Not sure what kind of style I want yet but I have a
 few ideas)
 
-**Stage 5 - Improvents and Explorable Features**
+**Stage 5 - Improvements and Explorable Features**
 
 - [ ] Squading System (A twist on control groups to multi task)
 - [ ] Wave Mode (A game mode where you create waves that spawn every 1-3 minutes to have a gradully increasing paced
@@ -197,6 +196,7 @@ untick "Create seperate module per source set"
 5. Once oyu have set the config you should get a menu showing all the module you can import, select all the modules
 ```
 ![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Cloning%20the%20Repo%20and%20syncing%20gradle/Import_Modules.png?raw=true)
+
 ### Guide to setting up the Android SDK
 
 Use this guide if you haven't got an Android SDK Setup in IntelliJ
