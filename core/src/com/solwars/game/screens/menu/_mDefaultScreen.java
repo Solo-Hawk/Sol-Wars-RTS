@@ -1,13 +1,12 @@
 package com.solwars.game.screens.menu;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
+import com.solwars.game.screens.DefaultScreen;
 
 /**
  * Default screen for all menu classes
  */
-public class _mDefaultScreen implements Screen {
+public class _mDefaultScreen extends DefaultScreen{
     protected Game game;
 
     public float x;
