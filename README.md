@@ -1,4 +1,5 @@
 # Sol-Wars-RTS
+
 To learn and understand how to make a game I am learning LibGDX to make a 2D RTS Game as a way of learning both the 
 steps in making a game from start to finish as well as understanding how to make a simple AI to compliment my RTS game
 
@@ -7,7 +8,12 @@ steps in making a game from start to finish as well as understanding how to make
 - About the Game
     - The Idea
     - My Twist(s)
+        - Smart Squadding
+        - Minimalistic
     - Inspiration and Original Concept
+        - BOID
+        - SolWars Original (Game Development Coursework Module)
+        - Ashes of the Singularity
 
 - Development
     - To-Do / Progress
@@ -16,13 +22,13 @@ steps in making a game from start to finish as well as understanding how to make
 - Downloading the Current Build
     - Getting Started
     - Prerequisites
-    - Setup
+    - Setup (In Progress)
         - Guide to Setting up Android SDK
         - Guide to Setting up the Desktop Launcher
 
 # About the Game
 
-My game was to be a 2D RTS Game (I may move to 3D but no in LibGDX) themed in Space Warfare, I want to create quick
+My game will be a 2D RTS Game (I may move to 3D but not in LibGDX) themed in Space Warfare, I want to create quick
 paced battles that needs quick reactions to work straight from the start, removing elements like multi resources and 
 control points
 
@@ -42,9 +48,50 @@ to use free assets and work on designs later (since I don't really do visual des
 
 ## My Twist(s)
 
+### Smart Squadding
 
+I wanted to make something that I don't frequently see in RTS Games, while control groups and manually setting teams in
+any army is cool, I wanted to make it a bit more automated and follow a formation in design, this would be having a
+sort of structure to the units in an RTS somewhere similar to Ashes of the Singularity, where a large Capital unit can
+be in command and lead smaller units like Special and Grunt type units.
+
+This system wouldn't simply be something that help just group units but determine how they fight when not being managed
+by the user. If the squad consisted of basic grunt type units, they would play aggressive and use their speed and small
+size to their advantage while if teamed with a special type of unit they would aim to intercept and support on that
+special unit's target.
+
+What I expect is a system where a player can feel more focused in certain fights and has more freedom to leave a combat
+scene while the AI does the rest. Though I see this as possible a big aim with the mention of AI I have thought of
+ideas that may seem feasible and I want to try before looking away from this.
+
+### Minimalistic
+
+When I see some RTS Games though I do find micro managing fun sometime or longed out games I lose sight on many
+elements, I want to make my game have a simple path from start to finish. How? I'm not too sure but I would see
+ideas being the use of no resources to construct units, few unit types or no secondary objectives
 
 ## Inspiration and Original Concept
+
+### BOID
+![](http://vignette3.wikia.nocookie.net/steamtradingcards/images/e/e5/Boid_Logo.jpg/revision/latest?cb=20150401201235)
+
+BOID was a very large inspiration for wanting to make a strategy game, I came across this game while checking out some
+Indie Games at EGX 2013, I got hold of the game when it was released and saw its style of gameplay very unique and
+simple, so I wanted to look at that aspect from this game, all I saw was that this game felt a bit slow at times and
+hard to maneuver.
+
+### SolWars Original (Game Development Coursework Module)
+
+**In Progress** - I am building my github.io where my code for this currently is so I'll talk about this part once I'm 
+finished
+
+### Ashes of the Singularity
+![](http://cdn.edgecast.steamstatic.com/steam/apps/507490/header.jpg?t=1506015473)
+
+Ashes of the Singularity is a very large RTS Game made for long and sustained warfare, the use of managing large groups
+of armies under the flagship of a large dreadnought made me think of how making a structured army / platoon / squad
+would work to make synergy a more amazing aspect of an RTS game. This gave me the idea of 'smart squadding' and making
+more automated combat, to an extent
 
 # Development
 
@@ -79,8 +126,10 @@ upon. This will help build the game further
 
 - [ ] Build a factory model that will be used to produce ships
 - [ ] Make AI types for more adaptive game play (Aggressive, Defensive e.c.t)
+- [ ] Create or find someone to outsource art work for the game (Not sure what kind of style I want yet but I have a
+few ideas)
 
-**Stage 5 - Improvents and Explorable Features**
+**Stage 5 - Improvements and Explorable Features**
 
 - [ ] Squading System (A twist on control groups to multi task)
 - [ ] Wave Mode (A game mode where you create waves that spawn every 1-3 minutes to have a gradully increasing paced
@@ -115,11 +164,38 @@ Below is a guide on how to take a copy of the latest game build from the 'releas
 **Optional**
 - LibGDX Setup app - get it [here](https://libgdx.badlogicgames.com/download.html)
 
-## Setup
-    
+## Setup 
+
 Clone the 'release' branch latest build.
 
 Open the working directory in IntelliJ and Setup the Android SDK
+
+### Cloning Repo and Importing Project
+
+```
+1. Clone the repo from release branch
+```
+
+```
+2. Select File -> New -> Project from Exisitng Sources
+```
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Cloning%20the%20Repo%20and%20syncing%20gradle/Project_from_Existing_Sources.png?raw=true)
+
+```
+3. Locate the project's build.gradle file
+```
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Cloning%20the%20Repo%20and%20syncing%20gradle/Locate_Build_Gradle.png?raw=true)
+
+```
+4. Once you locate the file you should get a menu with a few config settings to go through, tick "Use auto-import" and 
+untick "Create seperate module per source set"
+```
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Cloning%20the%20Repo%20and%20syncing%20gradle/Import_Project.png?raw=true)
+
+```
+5. Once oyu have set the config you should get a menu showing all the module you can import, select all the modules
+```
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Cloning%20the%20Repo%20and%20syncing%20gradle/Import_Modules.png?raw=true)
 
 ### Guide to setting up the Android SDK
 
@@ -127,29 +203,28 @@ Use this guide if you haven't got an Android SDK Setup in IntelliJ
 ```
 1. Open the Project Structure and Locate the SDK Menu and at the top click the '+' then 'Android SDK'
 ```
-![alt](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/open_PS.png?raw=true)
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/open_PS.png?raw=true)
 ```
 2. Locate the 'Home Directory' of your SDK
 ```
 For Windows users this is normally located in you C:\Users\[Account Name]\AppData\Local\Android\sdk
 
-![alt](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Locate_Home_Directory.png?raw=true)
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Locate_Home_Directory.png?raw=true)
 ```
 3. At the Create New Android SDK dialog check that the Java SDK if your latest version and that the Build Target matches
 your Android API Version
 ```
-![alt](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Create_SDK.png?raw=true)
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Create_SDK.png?raw=true)
 ```
 4. Once done you should be fine with the Android SDK being added to your IntelliJ Project Strucute
 ```
-![alt](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Setup.png?raw=true)
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Setup.png?raw=true)
 ```
 5. Goto the modules tab and locate the android module
 
 6. On the right side of the menu set the Module SDK to the android SDK that you just added to your IntelliJ
 ```
-![alt](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Add%20to%20Module.png?raw=true)
-
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Add%20to%20Module.png?raw=true)
 
 ### Guide to setting up the Desktop Launcher
 
@@ -160,13 +235,13 @@ for running this on the desktop
 
 2. Select Edit Configurations
 ```
-![alt](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Config%20Launcher/open_config.png?raw=true)
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Config%20Launcher/open_config.png?raw=true)
 ```
 3. Click the '+' to create a new launch configuration
 
 4. Select 'Application' as the configuration type
 ```
-![alt](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Config%20Launcher/make_application_config.png?raw=true)
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Config%20Launcher/make_application_config.png?raw=true)
 ```
 5. Name the launch configuration Desktop (or something that makes it clear that its the desktop config)
 
@@ -176,8 +251,8 @@ for running this on the desktop
 
 8. Set the class path module to the desktop module
 ```
-![alt](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Config%20Launcher/configure_desktop_launcher.png?raw=true)
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Config%20Launcher/configure_desktop_launcher.png?raw=true)
 
-Once you've done that the launch configuration should appear where you oringally went to edit the configuration (Top Right)
+Once you've done that the launch configuration should appear where you originally went to edit the configuration (Top Right)
 of the IDE (If it still says Android click the dropdown and select Desktop)
 
