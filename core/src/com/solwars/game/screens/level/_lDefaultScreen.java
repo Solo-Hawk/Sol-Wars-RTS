@@ -1,16 +1,13 @@
-package com.solwars.game.screens.menu;
+package com.solwars.game.screens.level;
 
 import com.badlogic.gdx.Game;
 import com.solwars.game.screens.DefaultScreen;
 
-/**
- * Default screen for all menu classes
- */
-public class _mDefaultScreen extends DefaultScreen{
+public class _lDefaultScreen extends DefaultScreen {
+
     protected Game game;
 
-    public float x;
-    public _mDefaultScreen(Game game){this.game = game;}
+    public _lDefaultScreen(Game game){this.game = game;}
 
     public void setInput(){
         // add Gdx.input.setInputProcessor(stage); in respective screens
@@ -21,11 +18,6 @@ public class _mDefaultScreen extends DefaultScreen{
 
     }
 
-    public void setX(float x){
-        this.x = x;
-    }
-
-    public float getX(){return this.x;}
 
     @Override
     public void show() {

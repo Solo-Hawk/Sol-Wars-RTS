@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 public class ResourcesManager {
     public Skin theme = new Skin(Gdx.files.internal("flat/skin/skin.json"));
 
+    public Image gameTitle = new Image(new Texture(Gdx.files.internal("solWars/title.png")));
 
     public static ResourcesManager instance;
 
