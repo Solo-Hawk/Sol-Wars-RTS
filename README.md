@@ -105,16 +105,16 @@ start making the game but making the menu as a platform of understanding what to
 
 **Stage 1 - Making the Menu**
 
-- [ ] Main Screen
-- [ ] Basic Settings Screen
-- [ ] Create a transition handler (Changing from Main to Settings)
+- [x] Main Screen
+- [x] Basic Settings Screen
+- [x] Create a transition handler (Changing from Main to Settings)
 
 **Stage 2 - Building the Game (MVP)**
 
 The end of this stage I should have a Ship class that I can use to extend from and the basic version of an AI to build
 upon. This will help build the game further
 
-- [ ] Create a basic design of spawning and killing sprites (Ships)
+- [ ] Create a basic design of spawning and killing sprites (Ships) - **Current Stage**
 - [ ] Learning how to make a simple form of AI (Just moving randomly in a general direction to fight player)
 
 **Stage 3 - Expanding the game to have Ship classes**
@@ -193,7 +193,7 @@ untick "Create seperate module per source set"
 ![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Cloning%20the%20Repo%20and%20syncing%20gradle/Import_Project.png?raw=true)
 
 ```
-5. Once oyu have set the config you should get a menu showing all the module you can import, select all the modules
+5. Once you have set the config you should get a menu showing all the module you can import, select all the modules
 ```
 ![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Cloning%20the%20Repo%20and%20syncing%20gradle/Import_Modules.png?raw=true)
 
