@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.solwars.game.ResourcesManager;
+import com.solwars.game.screens.level.Level;
 
 /**
  * Menu container for all menu elements
@@ -44,7 +45,7 @@ public class menuMain extends _mDefaultScreen {
                 buttonNewGame.setChecked(false);
                 Menu.getInstance().mMain.dispose();
                 System.out.println("Here");
-                //Add set screen here
+                Menu.getInstance().game.setScreen(new Level(Menu.getInstance().game));
 
             }});
         buttonSettings.addListener(new ClickListener(){
