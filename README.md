@@ -25,6 +25,8 @@ steps in making a game from start to finish as well as understanding how to make
     - Setup (In Progress)
         - Guide to Setting up Android SDK
         - Guide to Setting up the Desktop Launcher
+        
+- Acknowledgments
 
 # About the Game
 
@@ -255,4 +257,6 @@ for running this on the desktop
 
 Once you've done that the launch configuration should appear where you originally went to edit the configuration (Top Right)
 of the IDE (If it still says Android click the dropdown and select Desktop)
+
+# Acknowledgments   
 
