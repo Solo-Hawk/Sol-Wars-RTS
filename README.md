@@ -18,14 +18,7 @@ steps in making a game from start to finish as well as understanding how to make
 - Development
     - To-Do / Progress
     - Notes
-   
-- Downloading the Current Build
-    - Getting Started
-    - Prerequisites
-    - Setup (In Progress)
-        - Guide to Setting up Android SDK
-        - Guide to Setting up the Desktop Launcher
-        
+          
 - Acknowledgments
 
 # About the Game
@@ -38,6 +31,8 @@ The game was thought of from two elements
 1. BOID - A game on Steam with a nice and simple RTS design
 2. My Game Development module - At College I did a Game Dev Module which I used to make a simple game, from that I
 thought of expanding upon it further
+
+Some basic information is covered in this readme but you can find more detail in my wiki (WIP)
 
 ## The Idea
 
@@ -147,117 +142,6 @@ to work at Home
 As I continue to build the game I will probably come up with more game types / ideas that I could use in the main game
 or add as a extra feature, this will be built upon Stage 5
 
-# Downloading the Current Build
-
-To get the code for the current game you can clone the release branch or if you want to see where I'm currently at clone
-the release build
-
-## Getting Started
-
-Below is a guide on how to take a copy of the latest game build from the 'release' branch and test the progress so far 
-
-## Prerequisites
-
-- Java JDK 8
-- Java JRE 8
-- IntelliJ
-- Android Studio (Latest)
-
-**Optional**
-- LibGDX Setup app - get it [here](https://libgdx.badlogicgames.com/download.html)
-
-## Setup 
-
-Clone the 'release' branch latest build.
-
-Open the working directory in IntelliJ and Setup the Android SDK
-
-### Cloning Repo and Importing Project
-
-```
-1. Clone the repo from release branch
-```
-
-```
-2. Select File -> New -> Project from Exisitng Sources
-```
-![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Cloning%20the%20Repo%20and%20syncing%20gradle/Project_from_Existing_Sources.png?raw=true)
-
-```
-3. Locate the project's build.gradle file
-```
-![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Cloning%20the%20Repo%20and%20syncing%20gradle/Locate_Build_Gradle.png?raw=true)
-
-```
-4. Once you locate the file you should get a menu with a few config settings to go through, tick "Use auto-import" and 
-untick "Create seperate module per source set"
-```
-![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Cloning%20the%20Repo%20and%20syncing%20gradle/Import_Project.png?raw=true)
-
-```
-5. Once you have set the config you should get a menu showing all the module you can import, select all the modules
-```
-![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Cloning%20the%20Repo%20and%20syncing%20gradle/Import_Modules.png?raw=true)
-
-### Guide to setting up the Android SDK
-
-Use this guide if you haven't got an Android SDK Setup in IntelliJ
-```
-1. Open the Project Structure and Locate the SDK Menu and at the top click the '+' then 'Android SDK'
-```
-![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/open_PS.png?raw=true)
-```
-2. Locate the 'Home Directory' of your SDK
-```
-For Windows users this is normally located in you C:\Users\[Account Name]\AppData\Local\Android\sdk
-
-![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Locate_Home_Directory.png?raw=true)
-```
-3. At the Create New Android SDK dialog check that the Java SDK if your latest version and that the Build Target matches
-your Android API Version
-```
-![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Create_SDK.png?raw=true)
-```
-4. Once done you should be fine with the Android SDK being added to your IntelliJ Project Strucute
-```
-![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Setup.png?raw=true)
-```
-5. Goto the modules tab and locate the android module
-
-6. On the right side of the menu set the Module SDK to the android SDK that you just added to your IntelliJ
-```
-![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Android%20Setup/Add%20to%20Module.png?raw=true)
-
-### Guide to setting up the Desktop Launcher
-
-So you can run the app on your machine as a desktop version and not an android version you need to configure a launcher 
-for running this on the desktop
-```
-1. Select the dropdown next to the build button
-
-2. Select Edit Configurations
-```
-![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Config%20Launcher/open_config.png?raw=true)
-```
-3. Click the '+' to create a new launch configuration
-
-4. Select 'Application' as the configuration type
-```
-![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Config%20Launcher/make_application_config.png?raw=true)
-```
-5. Name the launch configuration Desktop (or something that makes it clear that its the desktop config)
-
-6. Assign the main class of the launcher to the DesktopLauncher class (Click '...' on the right to find the module)
-
-7. Set the working directory to the assest folder located in ...\Sol-Wars-RTS\android\assets
-
-8. Set the class path module to the desktop module
-```
-![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/master/images/Config%20Launcher/configure_desktop_launcher.png?raw=true)
-
-Once you've done that the launch configuration should appear where you originally went to edit the configuration (Top Right)
-of the IDE (If it still says Android click the dropdown and select Desktop)
-
 # Acknowledgments   
 
-Kenney's Assets Pack - Space Shooter Redux and v2
+Kenney's Assets Pack - Space Shooter Redux and v2   
