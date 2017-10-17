@@ -4,6 +4,10 @@ package com.solwars.game.screens.menu;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.*;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.solwars.game.ResourcesManager;
 
 
 /**
@@ -11,7 +15,8 @@ import com.badlogic.gdx.graphics.*;
  */
 public class Menu extends _mDefaultScreen {
 
-
+    Stage stage = new Stage();
+    Image title = ResourcesManager.getInstance().gameTitle;
 
     _mDefaultScreen activeScene;
     _mDefaultScreen transitionScene;
@@ -59,7 +64,8 @@ public class Menu extends _mDefaultScreen {
 
 
     public void init(){
-
+        title.setPosition((Gdx.graphics.getWidth() / 2) - (title.getWidth()/2), (Gdx.graphics.getHeight() / 8) * 6);
+        stage.addActor(title);
     }
 
 
@@ -74,11 +80,16 @@ public class Menu extends _mDefaultScreen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(1, 1, 1, 1);
+        Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        if(activeScene == mMain){
+            stage.act();
+            stage.draw();
+        }
         if(isTransition) {
             transition(delta);
-        }else{activeScene.render(delta);}
+        }else{
+            activeScene.render(delta);}
     }
 
     public void setTransition(_mDefaultScreen newScreen, boolean moveLeft){
