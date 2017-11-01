@@ -8,17 +8,23 @@ import com.badlogic.gdx.math.Vector2;
 
 // A simple steering agent for 2D.
 // Of course, for 3D (well, actually for 2.5D) you have to replace all occurrences of Vector2 with  Vector3.
-public class SteeringAgent implements Steerable<Vector2> {
+public class SteeringAgentRedundant implements Steerable<Vector2> {
 
     private static final SteeringAcceleration<Vector2> steeringOutput =
             new SteeringAcceleration<Vector2>(new Vector2());
 
+
+    
     Vector2 position;
-    float orientation;
     Vector2 linearVelocity;
+    float orientation;
     float angularVelocity;
-    float maxSpeed;
+    float maxLinearSpeed;
+    float maxLinearAcceleration;
+    float maxAngularSpeed;
+    float maxAngularAcceleration;
     boolean independentFacing;
+
     SteeringBehavior<Vector2> steeringBehavior;
 
 	/* Here you should implement missing methods inherited from Steerable */

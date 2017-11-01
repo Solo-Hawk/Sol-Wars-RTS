@@ -18,6 +18,10 @@ public class ResourcesManager {
 
     public Image gameTitle = new Image(new Texture(Gdx.files.internal("solWars/title.png")));
 
+    public Texture shipBomber = new Texture(Gdx.files.internal("kenney/ships/bomber/Bomber.png"));
+    public Texture shipFighter = new Texture(Gdx.files.internal("kenney/ships/fighter/Fighter.png"));
+
+
     public static ResourcesManager instance;
 
     public static ResourcesManager getInstance(){
