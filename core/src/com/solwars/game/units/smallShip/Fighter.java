@@ -42,10 +42,7 @@ public class Fighter extends _sShip {
 
     }
 
-    public void update(){
 
-
-    }
     @Override
     public void draw(SpriteBatch batch){
         super.draw(batch,sprite);

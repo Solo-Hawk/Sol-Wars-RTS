@@ -9,12 +9,16 @@ import com.solwars.game.units.Unit;
  */
 public class _sShip extends Unit{
 
+    // Combat Based Variables for Single Fixed weapon ships
+    protected float range; // Range of Weapons (currently based on resolution for development)
+    protected float firerate; // Shots per second
+    protected float targetTime; // Minimum time before firing at new target
+
     public _sShip (){
         super();
     }
 
     public void draw(SpriteBatch batch, Sprite sprite) {
-        System.out.println("ship");
         super.draw(batch, sprite);
     }
 }

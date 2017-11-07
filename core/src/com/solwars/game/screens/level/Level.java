@@ -21,13 +21,19 @@ public class Level extends _lDefaultScreen{
     SpriteBatch spriteBatch = new SpriteBatch();
 
     Sprite ship = new Sprite(ResourcesManager.getInstance().shipFighter);
-    Unit unit = new Fighter();
+    Unit unit;
+    Unit unit2;
 
 
     public Level(Game game){
         super(game);
         setInput();
-        // unit.steeringManager.
+
+        unit = new Fighter();
+        unit2 = new Fighter();
+        unit2.setPosition(new Vector2(500,500));
+        unit.setLinearVelocity(new Vector2(1,1));
+        unit.setTarget(unit2);
 
     }
 
@@ -50,9 +56,13 @@ public class Level extends _lDefaultScreen{
     public void render(float delta) {
         Gdx.gl.glClearColor(1f, 1f, 1f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        unit.update();
+
         spriteBatch.begin();
+        unit2.draw(spriteBatch);
         unit.draw(spriteBatch);
         spriteBatch.end();
+        unit.setOrientation(unit.getOrientation() + (60f * delta));
     }
 
     @Override

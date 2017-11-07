@@ -22,20 +22,42 @@ public class Unit{
     // Combat based variables
     protected Unit target;
     protected Vector2 targetPos;
-    protected float range;
-    protected float firerate;
-    protected float targetTime;
+
 
     public Unit(){
+    }
 
+    public void update(){
+        if(target != null){
+            // linearVelocity = target.getPosition().
+        }
+        linearVelocity.setAngle(orientation);
+        position.add(linearVelocity);
     }
 
     public void draw(SpriteBatch batch, Sprite sprite){
-        sprite.setPosition(100,100);
+        sprite.setPosition(position.x,position.y);
+        sprite.setRotation(orientation);
         sprite.draw(batch);
     }
 
     public void draw(SpriteBatch batch){
+    }
+
+    public Vector2 getPosition(){return position;}
+    public void setPosition(Vector2 position){this.position = position;}
+
+    public Vector2 getLinearVelocity(){return linearVelocity;}
+    public void setLinearVelocity(Vector2 linearVelocity){this.linearVelocity = linearVelocity;}
+
+    public float getOrientation(){return orientation;}
+    public void setOrientation(float orientation){
+        this.orientation = orientation;
+    }
+
+    public Unit getTarget(){return target;}
+    public void setTarget(Unit target){
+        this.target = target;
     }
 
 
