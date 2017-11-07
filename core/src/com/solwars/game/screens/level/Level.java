@@ -28,13 +28,13 @@ public class Level extends _lDefaultScreen{
     public Level(Game game){
         super(game);
         setInput();
-
         unit = new Fighter();
         unit2 = new Fighter();
         unit2.setPosition(new Vector2(500,500));
-        unit.setLinearVelocity(new Vector2(1,1));
+        unit.setLinearVelocity(new Vector2(0,0));
         unit.setTarget(unit2);
-
+        System.out.println(unit2.getTarget());
+        System.out.println(unit2.getPosition());
     }
 
     public void setInput(){
@@ -54,15 +54,16 @@ public class Level extends _lDefaultScreen{
 
     @Override
     public void render(float delta) {
+        // unit2.setPosition(new Vector2(500,500));
         Gdx.gl.glClearColor(1f, 1f, 1f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         unit.update();
+        unit2.update();
 
         spriteBatch.begin();
         unit2.draw(spriteBatch);
         unit.draw(spriteBatch);
         spriteBatch.end();
-        unit.setOrientation(unit.getOrientation() + (60f * delta));
     }
 
     @Override

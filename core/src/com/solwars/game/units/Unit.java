@@ -2,7 +2,11 @@ package com.solwars.game.units;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.solwars.game.ResourcesManager;
 import com.solwars.game.units.smallShip._shipAI;
 
 /**
@@ -20,16 +24,23 @@ public class Unit{
 
 
     // Combat based variables
-    protected Unit target;
-    protected Vector2 targetPos;
+    protected Unit target = null;
+    protected Vector2 targetPos = null;
 
 
     public Unit(){
     }
 
+    public void debug(Stage stage){
+        Label debug = new Label("Position", ResourcesManager.getInstance().theme);
+    }
+
     public void update(){
         if(target != null){
-            // linearVelocity = target.getPosition().
+            targetPos = new Vector2(target.getPosition().x, target.getPosition().y); // You cannot pass target.getPosition because that passes the reference of the variable not the values
+            linearVelocity = targetPos.sub(position);
+            linearVelocity = linearVelocity.scl(maxLinearSpeed);
+            linearVelocity = linearVelocity.nor();
         }
         linearVelocity.setAngle(orientation);
         position.add(linearVelocity);
@@ -60,5 +71,7 @@ public class Unit{
         this.target = target;
     }
 
+    public Vector2 getTargetPos(){return targetPos;}
+    public void setTargetPos(Vector2 targetPos){this.targetPos = targetPos;}
 
 }
