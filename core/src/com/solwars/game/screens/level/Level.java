@@ -6,17 +6,23 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.solwars.game.ResourcesManager;
 import com.solwars.game.units.Unit;
 import com.solwars.game.units.smallShip.Fighter;
 
 public class Level extends _lDefaultScreen{
+    final boolean DEBUG = true;
+    Label debug = new Label("Debug", ResourcesManager.getInstance().theme);
+    ShapeRenderer shapeDebugger = new ShapeRenderer();
 
     Stage stage = new Stage();
+
 
     SpriteBatch spriteBatch = new SpriteBatch();
 
@@ -54,7 +60,9 @@ public class Level extends _lDefaultScreen{
 
     @Override
     public void render(float delta) {
+        stage.clear();
         // unit2.setPosition(new Vector2(500,500));
+
         Gdx.gl.glClearColor(1f, 1f, 1f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         unit.update();
@@ -63,7 +71,28 @@ public class Level extends _lDefaultScreen{
         spriteBatch.begin();
         unit2.draw(spriteBatch);
         unit.draw(spriteBatch);
+        if(DEBUG){
+            debug1();
+
+        }
         spriteBatch.end();
+
+        stage.draw();
+        if(DEBUG){
+            debug2();
+
+        }
+    }
+
+
+    public void debug1(){
+        unit.debugStats(stage);
+        unit2.debugStats(stage);
+    }
+    public void debug2(){
+        unit2.debugLines(shapeDebugger);
+        unit.debugLines(shapeDebugger);
+
     }
 
     @Override

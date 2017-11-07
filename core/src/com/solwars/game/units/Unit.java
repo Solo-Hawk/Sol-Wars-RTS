@@ -1,11 +1,14 @@
 package com.solwars.game.units;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.utils.Align;
 import com.solwars.game.ResourcesManager;
 import com.solwars.game.units.smallShip._shipAI;
 
@@ -13,6 +16,7 @@ import com.solwars.game.units.smallShip._shipAI;
  * Created by Student on 18/10/2017.
  */
 public class Unit{
+    // Movement based variables
     protected Vector2 position;
     protected Vector2 linearVelocity;
     protected float orientation;
@@ -20,7 +24,9 @@ public class Unit{
     protected float maxLinearAcceleration;
     protected float maxAngularSpeed;
     protected float maxAngularAcceleration;
-
+    // Debug Variables
+    private Vector2 debugPos = new Vector2();
+    private Vector2 debugVector = new Vector2();
 
 
     // Combat based variables
@@ -31,8 +37,48 @@ public class Unit{
     public Unit(){
     }
 
-    public void debug(Stage stage){
-        Label debug = new Label("Position", ResourcesManager.getInstance().theme);
+    public void debugStats(Stage stage) {
+        Label debug = new Label(position.toString(), ResourcesManager.getInstance().theme);
+        Label debug2 = new Label(linearVelocity.toString(), ResourcesManager.getInstance().theme);
+        Label debug3 = new Label(debugVector.toString(), ResourcesManager.getInstance().theme);
+        Label debug4 = new Label(debugPos.add(debugVector).toString(), ResourcesManager.getInstance().theme);
+
+
+        debug.setSize(120, 25);
+        debug2.setSize(120, 25);
+        debug3.setSize(120, 25);
+        debug4.setSize(120, 25);
+
+
+        debug.setAlignment(Align.center);
+        debug2.setAlignment(Align.center);
+        debug3.setAlignment(Align.center);
+        debug4.setAlignment(Align.center);
+
+
+        debug.setPosition(position.x + 100, position.y + 100);
+        debug2.setPosition(position.x + 100, position.y + 75);
+        debug3.setPosition(position.x + 100, position.y + 50);
+        debug4.setPosition(position.x + 100, position.y + 25);
+
+
+        stage.addActor(debug);
+        stage.addActor(debug2);
+        stage.addActor(debug3);
+        stage.addActor(debug4);
+    }
+
+
+    public void debugLines(ShapeRenderer shapeDebugger){
+        debugPos = new Vector2(position.x, position.y);
+        debugVector = new Vector2(linearVelocity.x, linearVelocity.y);
+        debugVector.nor();
+        debugVector.scl(200);
+        debugPos.y = debugPos.y + 50;
+        shapeDebugger.begin(ShapeRenderer.ShapeType.Line);
+        shapeDebugger.setColor(Color.GREEN);
+        shapeDebugger.line(debugPos, debugPos.add(debugVector));
+        shapeDebugger.end();
     }
 
     public void update(){
@@ -75,3 +121,5 @@ public class Unit{
     public void setTargetPos(Vector2 targetPos){this.targetPos = targetPos;}
 
 }
+
+
