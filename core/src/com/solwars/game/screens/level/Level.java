@@ -17,7 +17,9 @@ import com.solwars.game.units.Unit;
 import com.solwars.game.units.smallShip.Fighter;
 
 public class Level extends _lDefaultScreen{
-    final boolean DEBUG = true;
+    int tick = 0;
+
+    private final boolean DEBUG = false;
     Label debug = new Label("Debug", ResourcesManager.getInstance().theme);
     ShapeRenderer shapeDebugger = new ShapeRenderer();
 
@@ -64,8 +66,8 @@ public class Level extends _lDefaultScreen{
 
         Gdx.gl.glClearColor(1f, 1f, 1f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        unit.update();
-        unit2.update();
+        unit.update(delta);
+        unit2.update(delta);
         if(DEBUG){
             debug();
         }
@@ -73,11 +75,10 @@ public class Level extends _lDefaultScreen{
         spriteBatch.begin();
         unit2.draw(spriteBatch);
         unit.draw(spriteBatch);
-
-
         spriteBatch.end();
-
-
+        if(tick % 100 == 0)
+            unit2.setPosition(new Vector2((float)Math.random() * Gdx.graphics.getWidth(), (float)Math.random() * Gdx.graphics.getHeight() ));
+        tick++;
     }
 
 

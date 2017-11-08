@@ -45,7 +45,7 @@ public class Unit{
         Label debug = new Label(position.toString(), ResourcesManager.getInstance().theme);
         Label debug2 = new Label(linearVelocity.toString(), ResourcesManager.getInstance().theme);
         Label debug3 = new Label(debugVector.toString(), ResourcesManager.getInstance().theme);
-        
+
         debug.setSize(120, 25);
         debug2.setSize(120, 25);
         debug3.setSize(120, 25);
@@ -75,21 +75,26 @@ public class Unit{
         shapeDebugger.begin(ShapeRenderer.ShapeType.Line);
         shapeDebugger.setColor(Color.GREEN);
         shapeDebugger.line(debugPos.add(positioner), debugVector.add(debugPos));
-        System.out.println(shapeDebugger.isDrawing());
         shapeDebugger.end();
         // END OF LINE DEBUG
         // -------------------------------------------
     }
 
 
-    public void update(){
+    public void update(float delta){
         if(target != null){
+            Vector2 desired = new Vector2(linearVelocity.x, linearVelocity.y);
+            Vector2 steering;
             targetPos = new Vector2(target.getPosition().x, target.getPosition().y); // You cannot pass target.getPosition because that passes the reference of the variable not the values
-            linearVelocity = targetPos.sub(position);
-            linearVelocity = linearVelocity.scl(maxLinearSpeed);
-            linearVelocity = linearVelocity.nor();
+            desired = targetPos.sub(position);
+            desired = desired.scl(maxLinearSpeed * delta);
+            desired = desired.nor();
+            steering = new Vector2(desired).sub(new Vector2(linearVelocity));
+            steering.limit(maxAngularSpeed * delta);
+            linearVelocity.add(steering).limit(maxLinearSpeed * delta);
+
         }
-        linearVelocity.setAngle(orientation);
+        orientation = linearVelocity.angle();
         position.add(linearVelocity);
     }
 
