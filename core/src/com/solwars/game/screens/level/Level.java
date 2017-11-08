@@ -19,7 +19,7 @@ import com.solwars.game.units.smallShip.Fighter;
 public class Level extends _lDefaultScreen{
     int tick = 0;
 
-    private final boolean DEBUG = false;
+    private final boolean DEBUG = true;
     Label debug = new Label("Debug", ResourcesManager.getInstance().theme);
     ShapeRenderer shapeDebugger = new ShapeRenderer();
 
@@ -76,7 +76,7 @@ public class Level extends _lDefaultScreen{
         unit2.draw(spriteBatch);
         unit.draw(spriteBatch);
         spriteBatch.end();
-        if(tick % 500 == 0)
+        if(tick % 150 == 0)
             unit2.setPosition(new Vector2((float)Math.random() * Gdx.graphics.getWidth(), (float)Math.random() * Gdx.graphics.getHeight() ));
         tick++;
     }
