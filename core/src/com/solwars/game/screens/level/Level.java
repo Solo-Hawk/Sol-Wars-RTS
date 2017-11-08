@@ -26,7 +26,6 @@ public class Level extends _lDefaultScreen{
 
     SpriteBatch spriteBatch = new SpriteBatch();
 
-    Sprite ship = new Sprite(ResourcesManager.getInstance().shipFighter);
     Unit unit;
     Unit unit2;
 
@@ -67,33 +66,26 @@ public class Level extends _lDefaultScreen{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         unit.update();
         unit2.update();
-
+        if(DEBUG){
+            debug();
+        }
+        stage.draw();
         spriteBatch.begin();
         unit2.draw(spriteBatch);
         unit.draw(spriteBatch);
-        if(DEBUG){
-            debug1();
 
-        }
+
         spriteBatch.end();
 
-        stage.draw();
-        if(DEBUG){
-            debug2();
-
-        }
-    }
-
-
-    public void debug1(){
-        unit.debugStats(stage);
-        unit2.debugStats(stage);
-    }
-    public void debug2(){
-        unit2.debugLines(shapeDebugger);
-        unit.debugLines(shapeDebugger);
 
     }
+
+
+    public void debug(){
+        unit.debug(stage, this.shapeDebugger);
+        unit2.debug(stage, this.shapeDebugger);
+    }
+
 
     @Override
     public void resize(int width, int height) {

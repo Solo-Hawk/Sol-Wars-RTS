@@ -11,19 +11,18 @@ import com.solwars.game.units.Unit;
  */
 public class Fighter extends _sShip {
 
-    Sprite sprite = new Sprite(ResourcesManager.getInstance().shipFighter);
-
     // Movement based variables
 
 
 
     public Fighter(){
         super();
+        sprite = new Sprite(ResourcesManager.getInstance().shipFighter);
         position = new Vector2();
         linearVelocity = new Vector2();
         orientation = 0;
         maxLinearSpeed = 35f;
-        maxLinearAcceleration = 10f;
+        maxLinearAcceleration = 1f;
         maxAngularSpeed = 120f;
         maxAngularAcceleration = 80f;
 

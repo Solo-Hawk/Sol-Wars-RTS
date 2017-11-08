@@ -16,6 +16,9 @@ import com.solwars.game.units.smallShip._shipAI;
  * Created by Student on 18/10/2017.
  */
 public class Unit{
+    // Core Variables
+    protected Sprite sprite;
+
     // Movement based variables
     protected Vector2 position;
     protected Vector2 linearVelocity;
@@ -37,49 +40,47 @@ public class Unit{
     public Unit(){
     }
 
-    public void debugStats(Stage stage) {
+    public void debug(Stage stage, ShapeRenderer shapeDebugger) {
+        // START OF TEXT DEBUG
         Label debug = new Label(position.toString(), ResourcesManager.getInstance().theme);
         Label debug2 = new Label(linearVelocity.toString(), ResourcesManager.getInstance().theme);
         Label debug3 = new Label(debugVector.toString(), ResourcesManager.getInstance().theme);
-        Label debug4 = new Label(debugPos.add(debugVector).toString(), ResourcesManager.getInstance().theme);
-
-
+        
         debug.setSize(120, 25);
         debug2.setSize(120, 25);
         debug3.setSize(120, 25);
-        debug4.setSize(120, 25);
-
 
         debug.setAlignment(Align.center);
         debug2.setAlignment(Align.center);
         debug3.setAlignment(Align.center);
-        debug4.setAlignment(Align.center);
-
 
         debug.setPosition(position.x + 100, position.y + 100);
         debug2.setPosition(position.x + 100, position.y + 75);
         debug3.setPosition(position.x + 100, position.y + 50);
-        debug4.setPosition(position.x + 100, position.y + 25);
-
 
         stage.addActor(debug);
         stage.addActor(debug2);
         stage.addActor(debug3);
-        stage.addActor(debug4);
-    }
+        // END OF TEXT DEBUG
 
+        // -------------------------------------------
 
-    public void debugLines(ShapeRenderer shapeDebugger){
+        // START OF LINE DEBUG
+        Vector2 positioner = new Vector2(sprite.getWidth() / 2, sprite.getHeight() / 2);
         debugPos = new Vector2(position.x, position.y);
-        debugVector = new Vector2(linearVelocity.x, linearVelocity.y);
+        debugVector = new Vector2(1, 0);
+        debugVector.setAngle(orientation);
         debugVector.nor();
-        debugVector.scl(200);
-        debugPos.y = debugPos.y + 50;
+        debugVector.scl(100);
         shapeDebugger.begin(ShapeRenderer.ShapeType.Line);
         shapeDebugger.setColor(Color.GREEN);
-        shapeDebugger.line(debugPos, debugPos.add(debugVector));
+        shapeDebugger.line(debugPos.add(positioner), debugVector.add(debugPos));
+        System.out.println(shapeDebugger.isDrawing());
         shapeDebugger.end();
+        // END OF LINE DEBUG
+        // -------------------------------------------
     }
+
 
     public void update(){
         if(target != null){
