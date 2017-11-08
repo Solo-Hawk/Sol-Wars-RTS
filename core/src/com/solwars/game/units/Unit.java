@@ -116,9 +116,6 @@ public class Unit{
             float angleDesired = desired.angle();
 
             steering.limit((maxAngularSpeed / 10) * delta);
-//            System.out.println(angleActual + " " + angleDesired);
-
-            System.out.print(Math.abs(180 - angleActual) + " " + Math.abs(180 - angleDesired));
             if(Math.abs(180 - angleDesired) - 3 <=((Math.abs(180 - angleActual))) && ((Math.abs(180 - angleActual))) <= Math.abs(180 - angleDesired) + 3 ){
                 noticed = false;
                 steering.setAngle(steering.angle());
@@ -130,16 +127,8 @@ public class Unit{
                 }else{
                     steering.setAngle(steering.angle() - 3);
                 }
-
-//                linearVelocity.scl(1.005f);
-
             }
-            System.out.println( " " + noticed + " " + steering);
-
-            linearVelocity.add(steering).limit((maxLinearSpeed ) * delta);
-
-//            System.out.println(steering);
-
+            linearVelocity.add(steering.limit(maxAngularSpeed)).limit((maxLinearSpeed ) * delta);
         }
         orientation = linearVelocity.angle();
         position.add(linearVelocity);

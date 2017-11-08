@@ -17,7 +17,7 @@ import com.solwars.game.units.smallShip.Fighter;
 public class Level extends _lDefaultScreen{
     int tick = 0;
 
-    private final boolean DEBUG = true;
+    private final boolean DEBUG = false;
     Label debug = new Label("Debug", ResourcesManager.getInstance().theme);
     ShapeRenderer shapeDebugger = new ShapeRenderer();
 
@@ -46,7 +46,7 @@ public class Level extends _lDefaultScreen{
 //        unit2.setPosition(new Vector2(500,500));
 //        unit1.setLinearVelocity(new Vector2(0,0));
 //        unit1.setTarget(unit2);
-        for(int x = 0; x < 500; x++){
+        for(int x = 0; x < 20000; x++){
             GameInstance.getInstance().fighters.add(new Fighter());
             GameInstance.getInstance().fighters.get(x).setTarget(target);
             GameInstance.getInstance().fighters.get(x).setPosition(new Vector2((float)Math.random() * Gdx.graphics
@@ -94,10 +94,12 @@ public class Level extends _lDefaultScreen{
             unit.draw(spriteBatch);
         }
         spriteBatch.end();
-        if(tick % 150 == 0)
+        if(tick % 500 == 0)
             target.setPosition(new Vector2((float)Math.random() * Gdx.graphics.getWidth(), (float)Math.random() * Gdx
              .graphics.getHeight() ));
         tick++;
+        target.setPosition(new Vector2(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2));
+//        target.setPosition(new Vector2(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY() ));
     }
 
 
