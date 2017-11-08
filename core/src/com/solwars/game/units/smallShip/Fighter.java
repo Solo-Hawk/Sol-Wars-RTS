@@ -18,7 +18,7 @@ public class Fighter extends _sShip {
     public Fighter(){
         super();
         sprite = new Sprite(ResourcesManager.getInstance().shipFighter);
-        sprite.scale(-0.2f);
+        sprite.scale(-0.9f);
         desired = new Vector2();
         steering = new Vector2();
         position = new Vector2();

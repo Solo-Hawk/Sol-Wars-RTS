@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.Align;
 import com.solwars.game.ResourcesManager;
 
 /**
- * Contains all elements that will goto the Settings screen of the Game Menu (Currently just for volume control)
+ * Contains all elements that will goto the Settings screen of the GameInstance Menu (Currently just for volume control)
  */
 public class menuSettings extends _mDefaultScreen {
 

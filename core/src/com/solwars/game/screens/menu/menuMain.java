@@ -41,7 +41,7 @@ public class menuMain extends _mDefaultScreen {
         buttonNewGame.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y){
-                System.out.println("Start Game");
+                System.out.println("Start GameInstance");
                 buttonNewGame.setChecked(false);
                 Menu.getInstance().mMain.dispose();
                 System.out.println("Here");

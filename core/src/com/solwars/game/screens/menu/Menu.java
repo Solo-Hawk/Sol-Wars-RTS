@@ -49,7 +49,7 @@ public class Menu extends _mDefaultScreen {
 
     /**
      * Only called at the start of the programme in Main.java
-     * @param game - Game Instance
+     * @param game - GameInstance Instance
      */
     public Menu(Game game){
         super(game);
