@@ -22,12 +22,15 @@ public class Unit{
     // Movement based variables
     protected Vector2 position;
     protected Vector2 linearVelocity;
+    protected Vector2 desired;
+    protected Vector2 steering;
     protected float orientation;
     protected float maxLinearSpeed ;
     protected float maxLinearAcceleration;
     protected float maxAngularSpeed;
     protected float maxAngularAcceleration;
     // Debug Variables
+    private boolean noticed = false;
     private Vector2 debugPos = new Vector2();
     private Vector2 debugVector = new Vector2();
 
@@ -41,32 +44,36 @@ public class Unit{
     }
 
     public void debug(Stage stage, ShapeRenderer shapeDebugger) {
+        Vector2 positioner;
         // START OF TEXT DEBUG
-        Label debug = new Label(position.toString(), ResourcesManager.getInstance().theme);
-        Label debug2 = new Label(linearVelocity.toString(), ResourcesManager.getInstance().theme);
-        Label debug3 = new Label(debugVector.toString(), ResourcesManager.getInstance().theme);
-
+        Label debug = new Label((String.valueOf(noticed)), ResourcesManager.getInstance().theme);
         debug.setSize(120, 25);
-        debug2.setSize(120, 25);
-        debug3.setSize(120, 25);
-
         debug.setAlignment(Align.center);
-        debug2.setAlignment(Align.center);
-        debug3.setAlignment(Align.center);
-
         debug.setPosition(position.x + 100, position.y + 100);
-        debug2.setPosition(position.x + 100, position.y + 75);
-        debug3.setPosition(position.x + 100, position.y + 50);
-
         stage.addActor(debug);
-        stage.addActor(debug2);
-        stage.addActor(debug3);
+        
+//        Label debug2 = new Label(linearVelocity.toString(), ResourcesManager.getInstance().theme);
+//        debug2.setSize(120, 25);
+//        debug2.setAlignment(Align.center);
+//        debug2.setPosition(position.x + 100, position.y + 75);
+//        stage.addActor(debug2);
+//        
+//
+//        Label debug3 = new Label(debugVector.toString(), ResourcesManager.getInstance().theme);
+//        debug3.setSize(120, 25);
+//        debug3.setAlignment(Align.center);
+//        debug3.setPosition(position.x + 100, position.y + 50);
+//        stage.addActor(debug3);
+
+        
+       
+        
         // END OF TEXT DEBUG
 
         // -------------------------------------------
 
-        // START OF LINE DEBUG
-        Vector2 positioner = new Vector2(sprite.getWidth() / 2, sprite.getHeight() / 2);
+        // START OF VELOCITY LINE DEBUG
+        positioner = new Vector2(sprite.getWidth() / 2, sprite.getHeight() / 2);
         debugPos = new Vector2(position.x, position.y);
         debugVector = new Vector2(1, 0);
         debugVector.setAngle(orientation);
@@ -76,22 +83,62 @@ public class Unit{
         shapeDebugger.setColor(Color.GREEN);
         shapeDebugger.line(debugPos.add(positioner), debugVector.add(debugPos));
         shapeDebugger.end();
-        // END OF LINE DEBUG
+        // END OF VELOCITY LINE DEBUG
+
+        // -------------------------------------------
+
+        // START OF VELOCITY LINE DEBUG
+        positioner = new Vector2(sprite.getWidth() / 2, sprite.getHeight() / 2);
+        debugPos = new Vector2(position.x, position.y);
+        debugVector = new Vector2(1, 0);
+        debugVector.setAngle(desired.angle());
+        debugVector.nor();
+        debugVector.scl(100);
+        shapeDebugger.begin(ShapeRenderer.ShapeType.Line);
+        shapeDebugger.setColor(Color.RED);
+        shapeDebugger.line(debugPos.add(positioner), debugVector.add(debugPos));
+        shapeDebugger.end();
+        // END OF VELOCITY LINE DEBUG
+
         // -------------------------------------------
     }
 
 
     public void update(float delta){
         if(target != null){
-            Vector2 desired = new Vector2(linearVelocity.x, linearVelocity.y);
-            Vector2 steering;
+            desired = new Vector2(linearVelocity.x, linearVelocity.y);
             targetPos = new Vector2(target.getPosition().x, target.getPosition().y); // You cannot pass target.getPosition because that passes the reference of the variable not the values
             desired = targetPos.sub(position);
-            desired = desired.scl(maxLinearSpeed * delta);
-            desired = desired.nor();
+            desired.nor();
+            desired.scl(maxLinearSpeed * delta);
             steering = new Vector2(desired).sub(new Vector2(linearVelocity));
-            steering.limit(maxAngularSpeed * delta);
-            linearVelocity.add(steering).limit(maxLinearSpeed * delta);
+            float angleActual = orientation;
+            float angleDesired = desired.angle();
+
+            steering.limit((maxAngularSpeed / 10) * delta);
+//            System.out.println(angleActual + " " + angleDesired);
+
+            System.out.print(Math.abs(180 - angleActual) + " " + Math.abs(180 - angleDesired));
+            if(Math.abs(180 - angleDesired) - 3 <=((Math.abs(180 - angleActual))) && ((Math.abs(180 - angleActual))) <= Math.abs(180 - angleDesired) + 3 ){
+                noticed = false;
+                steering.setAngle(steering.angle());
+            }else{
+                noticed = true;
+
+                if(Math.abs(180 - angleDesired) - 1 <=((Math.abs(180 - angleActual)))){
+                    steering.setAngle(steering.angle() + 3);
+                }else{
+                    steering.setAngle(steering.angle() - 3);
+                }
+
+//                linearVelocity.scl(1.005f);
+
+            }
+            System.out.println( " " + noticed + " " + steering);
+
+            linearVelocity.add(steering).limit((maxLinearSpeed ) * delta);
+
+//            System.out.println(steering);
 
         }
         orientation = linearVelocity.angle();
