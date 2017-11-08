@@ -18,12 +18,13 @@ public class Fighter extends _sShip {
     public Fighter(){
         super();
         sprite = new Sprite(ResourcesManager.getInstance().shipFighter);
+        sprite.scale(0.3f);
         position = new Vector2();
         linearVelocity = new Vector2();
         orientation = 0;
-        maxLinearSpeed = 100f;
+        maxLinearSpeed = 1000f;
         maxLinearAcceleration = 1f;
-        maxAngularSpeed = 120f;
+        maxAngularSpeed = 360f;
         maxAngularAcceleration = 80f;
 
 

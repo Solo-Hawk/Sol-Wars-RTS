@@ -87,11 +87,12 @@ public class Unit{
             Vector2 steering;
             targetPos = new Vector2(target.getPosition().x, target.getPosition().y); // You cannot pass target.getPosition because that passes the reference of the variable not the values
             desired = targetPos.sub(position);
-            desired = desired.scl(maxLinearSpeed * delta);
-            desired = desired.nor();
+            desired.nor();
+            desired.scl(maxLinearSpeed * delta);
             steering = new Vector2(desired).sub(new Vector2(linearVelocity));
-            steering.limit(maxAngularSpeed * delta);
+            steering.limit((maxAngularSpeed / 10) * delta);
             linearVelocity.add(steering).limit(maxLinearSpeed * delta);
+            System.out.println(steering);
 
         }
         orientation = linearVelocity.angle();

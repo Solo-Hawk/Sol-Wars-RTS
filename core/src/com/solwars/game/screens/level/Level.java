@@ -76,7 +76,7 @@ public class Level extends _lDefaultScreen{
         unit2.draw(spriteBatch);
         unit.draw(spriteBatch);
         spriteBatch.end();
-        if(tick % 100 == 0)
+        if(tick % 500 == 0)
             unit2.setPosition(new Vector2((float)Math.random() * Gdx.graphics.getWidth(), (float)Math.random() * Gdx.graphics.getHeight() ));
         tick++;
     }
