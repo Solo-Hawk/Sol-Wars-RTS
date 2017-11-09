@@ -102,18 +102,18 @@ make this game and whats some of the best ways to start.
 I have since then settled on how I plan to do this and how to start recording all progress made, aiming to not even 
 start making the game but making the menu as a platform of understanding what to use and where to use certain functions
 
-**Stage 1 - Making the Menu**
+**Stage 1 - Making the Menu **
 
 - [x] Main Screen
 - [x] Basic Settings Screen
 - [x] Create a transition handler (Changing from Main to Settings)
 
-**Stage 2 - Building the Game (MVP)**
+**Stage 2 - Building the Game (MVP) - Current Stage**
 
 The end of this stage I should have a Ship class that I can use to extend from and the basic version of an AI to build
 upon. This will help build the game further
 
-- [ ] Create a basic design of spawning and killing sprites (Ships) - **Current Stage**
+- [ ] Create a basic design of spawning and killing sprites (Ships)
 - [ ] Learning how to make a simple form of AI (Just moving randomly in a general direction to fight player)
 
 **Stage 3 - Expanding the game to have Ship classes**

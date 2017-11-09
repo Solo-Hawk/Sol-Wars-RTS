@@ -3,23 +3,23 @@ package com.solwars.game.screens.level;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.solwars.game.ResourcesManager;
+import com.solwars.game.GameInstance;
 import com.solwars.game.units.Unit;
 import com.solwars.game.units.smallShip.Fighter;
 
 public class Level extends _lDefaultScreen{
     int tick = 0;
 
-    private final boolean DEBUG = true;
+    OrthographicCamera cam;
+
+    private final boolean DEBUG = false;
     Label debug = new Label("Debug", ResourcesManager.getInstance().theme);
     ShapeRenderer shapeDebugger = new ShapeRenderer();
 
@@ -28,20 +28,23 @@ public class Level extends _lDefaultScreen{
 
     SpriteBatch spriteBatch = new SpriteBatch();
 
-    Unit unit;
-    Unit unit2;
+
+    Unit target;
+    Unit tTarget;
+
+
 
 
     public Level(Game game){
         super(game);
         setInput();
-        unit = new Fighter();
-        unit2 = new Fighter();
-        unit2.setPosition(new Vector2(500,500));
-        unit.setLinearVelocity(new Vector2(0,0));
-        unit.setTarget(unit2);
-        System.out.println(unit2.getTarget());
-        System.out.println(unit2.getPosition());
+        cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        cam.position.x = Gdx.graphics.getWidth()/2;
+        cam.position.y = Gdx.graphics.getHeight()/2;
+        cam.update();
+        spriteBatch.getProjectionMatrix().set(cam.combined);
+        create();
+
     }
 
     public void setInput(){
@@ -53,7 +56,21 @@ public class Level extends _lDefaultScreen{
 
     }
 
+    public void create(){
+        target = new Fighter();
+        tTarget = new Fighter();
 
+        target.setPosition(new Vector2(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2));
+        tTarget.setPosition(new Vector2((float)Math.random() * Gdx.graphics.getWidth(), (float)Math.random() * Gdx.graphics.getHeight() ));
+        tTarget.setTarget(target);
+//        Handle limit is around 50,000 Entities
+        for(int x = 0; x < 1000; x++){
+            GameInstance.getInstance().fighters.add(new Fighter());
+            GameInstance.getInstance().fighters.get(x).setTarget(tTarget);
+            GameInstance.getInstance().fighters.get(x).setPosition(new Vector2((float)Math.random() * Gdx.graphics
+                    .getWidth(), (float)Math.random() * Gdx.graphics.getHeight() ));
+        }
+    }
     @Override
     public void show() {
 
@@ -62,29 +79,41 @@ public class Level extends _lDefaultScreen{
     @Override
     public void render(float delta) {
         stage.clear();
-        // unit2.setPosition(new Vector2(500,500));
-
         Gdx.gl.glClearColor(1f, 1f, 1f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        unit.update(delta);
-        unit2.update(delta);
+
+
+        for(Unit unit : GameInstance.getInstance().fighters)
+        {
+            unit.update(delta);
+        }
         if(DEBUG){
             debug();
         }
         stage.draw();
         spriteBatch.begin();
-        unit2.draw(spriteBatch);
-        unit.draw(spriteBatch);
+        target.draw(spriteBatch);
+        tTarget.update(delta);
+        tTarget.draw(spriteBatch);
+        for(Unit unit : GameInstance.getInstance().fighters)
+        {
+            unit.draw(spriteBatch);
+        }
         spriteBatch.end();
-        if(tick % 150 == 0)
-            unit2.setPosition(new Vector2((float)Math.random() * Gdx.graphics.getWidth(), (float)Math.random() * Gdx.graphics.getHeight() ));
+        if(tick % 50 == 0)
+            target.setPosition(new Vector2((float)Math.random() * Gdx.graphics.getWidth(), (float)Math.random() * Gdx
+             .graphics.getHeight() ));
+
         tick++;
+        GameInstance.getInstance().world.step(1/45f, 6, 2);
     }
 
 
     public void debug(){
-        unit.debug(stage, this.shapeDebugger);
-        unit2.debug(stage, this.shapeDebugger);
+        for(Unit unit : GameInstance.getInstance().fighters)
+        {
+            unit.debug(stage, shapeDebugger);
+        }
     }
 
 

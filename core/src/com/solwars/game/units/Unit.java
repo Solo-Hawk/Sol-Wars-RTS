@@ -29,6 +29,8 @@ public class Unit{
     protected float maxLinearAcceleration;
     protected float maxAngularSpeed;
     protected float maxAngularAcceleration;
+
+    protected float scaler;
     // Debug Variables
     private boolean noticed = false;
     private Vector2 debugPos = new Vector2();
@@ -78,7 +80,7 @@ public class Unit{
         debugVector = new Vector2(1, 0);
         debugVector.setAngle(orientation);
         debugVector.nor();
-        debugVector.scl(100);
+        debugVector.scl(30);
         shapeDebugger.begin(ShapeRenderer.ShapeType.Line);
         shapeDebugger.setColor(Color.GREEN);
         shapeDebugger.line(debugPos.add(positioner), debugVector.add(debugPos));
@@ -93,7 +95,7 @@ public class Unit{
         debugVector = new Vector2(1, 0);
         debugVector.setAngle(desired.angle());
         debugVector.nor();
-        debugVector.scl(100);
+        debugVector.scl(30);
         shapeDebugger.begin(ShapeRenderer.ShapeType.Line);
         shapeDebugger.setColor(Color.RED);
         shapeDebugger.line(debugPos.add(positioner), debugVector.add(debugPos));
@@ -116,29 +118,30 @@ public class Unit{
             float angleDesired = desired.angle();
 
             steering.limit((maxAngularSpeed / 10) * delta);
-//            System.out.println(angleActual + " " + angleDesired);
-
-            System.out.print(Math.abs(180 - angleActual) + " " + Math.abs(180 - angleDesired));
-            if(Math.abs(180 - angleDesired) - 3 <=((Math.abs(180 - angleActual))) && ((Math.abs(180 - angleActual))) <= Math.abs(180 - angleDesired) + 3 ){
+            if(Math.abs(angleDesired % 180) - 1 <=((Math.abs(180 - angleActual))) && ((Math.abs(180 - angleActual))) <= Math.abs(angleDesired % 180) + 1 ){
                 noticed = false;
                 steering.setAngle(steering.angle());
             }else{
                 noticed = true;
-
-                if(Math.abs(180 - angleDesired) - 1 <=((Math.abs(180 - angleActual)))){
-                    steering.setAngle(steering.angle() + 3);
-                }else{
-                    steering.setAngle(steering.angle() - 3);
-                }
-
-//                linearVelocity.scl(1.005f);
-
+                steering.setAngle(steering.angle());
+//                if(Math.abs(180 - angleDesired) - 1 <=((Math.abs(180 - angleActual)))){
+//                    steering.setAngle(steering.angle() + 1);
+//                }else{
+//                    steering.setAngle(steering.angle() - 1);
+//                }
             }
-            System.out.println( " " + noticed + " " + steering);
+            linearVelocity.add(steering.limit(maxLinearAcceleration).limit(maxLinearSpeed));
+//            System.out.println(targetPos.len());
 
-            linearVelocity.add(steering).limit((maxLinearSpeed ) * delta);
+            if(new Vector2(targetPos.x, targetPos.y).sub(position).len() < maxLinearSpeed){
+                scaler =  maxLinearAcceleration / new Vector2(targetPos.x, targetPos.y).sub(position).len();
+//                System.out.println("Pre Scaled " + scaler);
+                scaler = scaler < 1.0f ? scaler : 1.0f;
 
-//            System.out.println(steering);
+//                System.out.println("Pre Scaled " + linearVelocity.len());
+                linearVelocity.scl(scaler);
+//                System.out.println("After Scale " + linearVelocity.len());
+            }
 
         }
         orientation = linearVelocity.angle();
