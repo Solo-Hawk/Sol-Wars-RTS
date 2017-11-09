@@ -24,10 +24,10 @@ public class Fighter extends _sShip {
         position = new Vector2();
         linearVelocity = new Vector2();
         orientation = 0;
-        maxLinearSpeed = 1000f;
-        maxLinearAcceleration = 10f;
-        maxAngularSpeed = 80f;
-        maxAngularAcceleration = 10f;
+        maxLinearSpeed = 500f;
+        maxLinearAcceleration = 500f;
+        maxAngularSpeed = 90f;
+        maxAngularAcceleration = 180f;
 
 
 
