@@ -22,13 +22,14 @@ public class Unit{
     // Movement based variables
     protected Vector2 position;
     protected Vector2 linearVelocity;
-    protected Vector2 desired;
+    protected Vector2 desiredVelocity;
     protected Vector2 steering;
     protected float orientation;
     protected float maxLinearSpeed ;
     protected float maxLinearAcceleration;
     protected float maxAngularSpeed;
     protected float maxAngularAcceleration;
+    protected float mass;
 
     protected float scaler;
     // Debug Variables
@@ -48,11 +49,6 @@ public class Unit{
     public void debug(Stage stage, ShapeRenderer shapeDebugger) {
         Vector2 positioner;
         // START OF TEXT DEBUG
-        Label debug = new Label((String.valueOf(noticed)), ResourcesManager.getInstance().theme);
-        debug.setSize(120, 25);
-        debug.setAlignment(Align.center);
-        debug.setPosition(position.x + 100, position.y + 100);
-        stage.addActor(debug);
         
 //        Label debug2 = new Label(linearVelocity.toString(), ResourcesManager.getInstance().theme);
 //        debug2.setSize(120, 25);
@@ -93,7 +89,7 @@ public class Unit{
         positioner = new Vector2(sprite.getWidth() / 2, sprite.getHeight() / 2);
         debugPos = new Vector2(position.x, position.y);
         debugVector = new Vector2(1, 0);
-        debugVector.setAngle(desired.angle());
+        debugVector.setAngle(desiredVelocity.angle());
         debugVector.nor();
         debugVector.scl(30);
         shapeDebugger.begin(ShapeRenderer.ShapeType.Line);
@@ -107,41 +103,40 @@ public class Unit{
 
 
     public void update(float delta){
+        targetPos = target.getPosition();
         if(target != null){
-            desired = new Vector2(linearVelocity.x, linearVelocity.y);
-            targetPos = new Vector2(target.getPosition().x, target.getPosition().y); // You cannot pass target.getPosition because that passes the reference of the variable not the values
-            desired = targetPos.sub(position);
-            desired.nor();
-            desired.scl(maxLinearSpeed * delta);
-            steering = new Vector2(desired).sub(new Vector2(linearVelocity));
-            float angleActual = orientation;
-            float angleDesired = desired.angle();
+            desiredVelocity = new Vector2(targetPos.x, targetPos.y);
+            desiredVelocity.sub(position);
+            desiredVelocity.nor();
+            desiredVelocity.scl(maxLinearSpeed);
+            steering = desiredVelocity.cpy().sub(linearVelocity);
+            steering = steering.mulAdd(steering, maxLinearAcceleration * delta);
+            steering.limit(maxAngularSpeed * delta);
+            steering.setLength(steering.len());
+            linearVelocity.mulAdd(linearVelocity.add(steering), maxLinearSpeed);
+            linearVelocity.limit(maxLinearSpeed * delta);
 
-            steering.limit((maxAngularSpeed / 10) * delta);
-            if(Math.abs(angleDesired % 180) - 1 <=((Math.abs(180 - angleActual))) && ((Math.abs(180 - angleActual))) <= Math.abs(angleDesired % 180) + 1 ){
-                noticed = false;
-                steering.setAngle(steering.angle());
-            }else{
-                noticed = true;
-                steering.setAngle(steering.angle());
-//                if(Math.abs(180 - angleDesired) - 1 <=((Math.abs(180 - angleActual)))){
-//                    steering.setAngle(steering.angle() + 1);
-//                }else{
-//                    steering.setAngle(steering.angle() - 1);
-//                }
-            }
-            linearVelocity.add(steering.limit(maxLinearAcceleration).limit(maxLinearSpeed));
-//            System.out.println(targetPos.len());
 
-            if(new Vector2(targetPos.x, targetPos.y).sub(position).len() < maxLinearSpeed){
-                scaler =  maxLinearAcceleration / new Vector2(targetPos.x, targetPos.y).sub(position).len();
-//                System.out.println("Pre Scaled " + scaler);
-                scaler = scaler < 1.0f ? scaler : 1.0f;
 
-//                System.out.println("Pre Scaled " + linearVelocity.len());
-                linearVelocity.scl(scaler);
-//                System.out.println("After Scale " + linearVelocity.len());
-            }
+
+//            desired = new Vector2(linearVelocity.x, linearVelocity.y);
+//            targetPos = new Vector2(target.getPosition().x, target.getPosition().y); // You cannot pass target.getPosition because that passes the reference of the variable not the values
+//            desired = targetPos.sub(position);
+//            desired.nor();
+//            desired.scl(maxLinearSpeed * delta);
+//            steering = new Vector2(desired).sub(new Vector2(linearVelocity));
+//            float angleActual = orientation;
+//            float angleDesired = desired.angle();
+//
+//            steering.limit((maxAngularSpeed / 10) * delta * linearVelocity.len());
+//            linearVelocity.add(steering.limit(maxLinearAcceleration).limit(maxLinearSpeed));
+//
+//            if(new Vector2(targetPos.x, targetPos.y).sub(position).len() < maxLinearSpeed){
+//                scaler =  maxLinearAcceleration / new Vector2(targetPos.x, targetPos.y).sub(position).len();
+//                scaler = scaler < 1.0f ? scaler : 1.0f;
+//
+//                linearVelocity.scl(scaler);
+//            }
 
         }
         orientation = linearVelocity.angle();
