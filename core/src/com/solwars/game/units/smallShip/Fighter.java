@@ -19,16 +19,10 @@ public class Fighter extends _sShip {
         super();
         sprite = new Sprite(ResourcesManager.getInstance().shipFighter);
         sprite.scale(-0.7f);
-        desiredVelocity = new Vector2();
-        steering = new Vector2();
-        position = new Vector2();
-        linearVelocity = new Vector2();
-        orientation = 0;
-        maxLinearSpeed = 1000f;
-        maxLinearAcceleration = 500f;
-        maxAngularSpeed = 100f;
-        maxAngularAcceleration = 100f;
-        mass = 100f;
+        steeringManager.setMaxLinearSpeed(1000f);
+        steeringManager.setMaxLinearAcceleration(500f);
+        steeringManager.setMaxAngularSpeed(400f);
+        steeringManager.setMaxAngularAcceleration(100f);
 
 
         // Combat based variables
@@ -40,7 +34,6 @@ public class Fighter extends _sShip {
     }
 
     public void spawn(Unit parent){
-        orientation = 90;
 
     }
 

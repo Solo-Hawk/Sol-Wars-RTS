@@ -61,7 +61,7 @@ public class Level extends _lDefaultScreen{
 
         target.setPosition(new Vector2(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2));;
 //        Handle limit is around 50,000 Entities
-        for(int x = 0; x < 10; x++){
+        for(int x = 0; x < 100; x++){
             GameInstance.getInstance().fighters.add(new Fighter());
             GameInstance.getInstance().fighters.get(x).setTarget(target);
             GameInstance.getInstance().fighters.get(x).setPosition(new Vector2((float)Math.random() * Gdx.graphics
@@ -75,6 +75,7 @@ public class Level extends _lDefaultScreen{
 
     @Override
     public void render(float delta) {
+        System.out.println(delta);
         stage.clear();
         Gdx.gl.glClearColor(1f, 1f, 1f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -96,9 +97,9 @@ public class Level extends _lDefaultScreen{
             unit.draw(spriteBatch);
         }
         spriteBatch.end();
-        if(tick % 200 == 0)
-            target.setPosition(new Vector2((float)Math.random() * Gdx.graphics.getWidth(), (float)Math.random() * Gdx
-             .graphics.getHeight() ));
+//        if(tick % 200 == 0)
+//            target.setPosition(new Vector2((float)Math.random() * Gdx.graphics.getWidth(), (float)Math.random() * Gdx
+//             .graphics.getHeight() ));
 
         tick++;
         GameInstance.getInstance().world.step(1/45f, 6, 2);
@@ -108,7 +109,7 @@ public class Level extends _lDefaultScreen{
     public void debug(){
         for(Unit unit : GameInstance.getInstance().fighters)
         {
-            unit.debug(stage, shapeDebugger);
+            //unit.debug(stage, shapeDebugger);
         }
     }
 
