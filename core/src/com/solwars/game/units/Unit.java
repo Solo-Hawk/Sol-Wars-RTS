@@ -21,6 +21,11 @@ public class Unit{
     protected Sprite sprite;
     
     // Movement based variables
+    protected float maxLinearSpeed;
+    protected float maxLinearAcceleration;
+    protected float maxAngularSpeed;
+    protected float maxAngularAcceleration;
+    protected float proximityRange;
     protected SteeringManager steeringManager = new SteeringManager(this);
 
 
@@ -37,6 +42,14 @@ public class Unit{
 
 
     public Unit(){
+
+    }
+    public void initialize(){
+        steeringManager.setMaxLinearSpeed(maxLinearSpeed);
+        steeringManager.setMaxLinearAcceleration(maxLinearAcceleration);
+        steeringManager.setMaxAngularSpeed(maxAngularSpeed);
+        steeringManager.setMaxAngularAcceleration(maxAngularAcceleration);
+        steeringManager.setProximityRange(proximityRange);
     }
 
 //    public void debug(Stage stage, ShapeRenderer shapeDebugger) {

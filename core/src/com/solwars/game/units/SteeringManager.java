@@ -28,11 +28,17 @@ public class SteeringManager {
     protected float maxLinearAcceleration;
     protected float maxAngularSpeed;
     protected float maxAngularAcceleration;
+
+    protected float proximityRange;
     protected float mass;
     protected float scaler;
 
     public void setPosition(Vector2 position) {
         this.position = position;
+    }
+
+    public void setProximityRange(float proximityRange){
+        this.proximityRange = proximityRange;
     }
 
     public void setMaxLinearSpeed(float maxLinearSpeed) {
@@ -65,7 +71,7 @@ public class SteeringManager {
     }
 
     public SteeringManager(Unit unit){
-        movementMode = SEEK;
+        movementMode = ARIVAL;
         desiredVelocity = new Vector2();
         steering = new Vector2();
         position = new Vector2();
@@ -78,8 +84,8 @@ public class SteeringManager {
         this.delta = delta;
         switch (movementMode){
             case SEEK    : seek(); break;
-            case FLEE    : break;
-            case ARIVAL  : break;
+            case FLEE    : flee(); break;
+            case ARIVAL  : arival(); break;
             case WANDER  : break;
             case PURSUIT : break;
             case EVADE   : break;
@@ -99,5 +105,29 @@ public class SteeringManager {
         steering.limit(maxAngularSpeed * delta);
         linearVelocity.mulAdd(linearVelocity.add(steering), maxLinearAcceleration * delta);
         linearVelocity.limit(maxLinearSpeed * delta);
+    }
+
+    private void flee(){
+        desiredVelocity = new Vector2(targetPos.x, targetPos.y);
+        desiredVelocity.sub(position);
+        desiredVelocity.nor();
+        desiredVelocity.scl(maxLinearSpeed * delta);
+        steering = desiredVelocity.cpy().sub(linearVelocity);
+        steering = steering.mulAdd(steering, maxAngularAcceleration * delta);
+        steering.rotate(180);
+        steering.limit(maxAngularSpeed * delta);
+        linearVelocity.mulAdd(linearVelocity.add(steering), maxLinearAcceleration * delta);
+        linearVelocity.limit(maxLinearSpeed * delta);
+    }
+    private void arival(){
+        seek();
+        float scale;
+        float distance;
+        distance = targetPos.cpy().sub(position).len();
+        scale = (distance - 10) / proximityRange;
+        scale = scale < 1.0f ? scale : 1.0f;
+        linearVelocity.scl(scale);
+
+
     }
 }

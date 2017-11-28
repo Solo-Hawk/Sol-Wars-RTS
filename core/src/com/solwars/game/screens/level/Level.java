@@ -61,7 +61,7 @@ public class Level extends _lDefaultScreen{
 
         target.setPosition(new Vector2(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2));;
 //        Handle limit is around 50,000 Entities
-        for(int x = 0; x < 100; x++){
+        for(int x = 0; x < 50; x++){
             GameInstance.getInstance().fighters.add(new Fighter());
             GameInstance.getInstance().fighters.get(x).setTarget(target);
             GameInstance.getInstance().fighters.get(x).setPosition(new Vector2((float)Math.random() * Gdx.graphics
@@ -97,6 +97,8 @@ public class Level extends _lDefaultScreen{
             unit.draw(spriteBatch);
         }
         spriteBatch.end();
+        target.setPosition(new Vector2(Gdx.input.getX(), Gdx.graphics.getHeight() - (Gdx.input.getY() )));
+
 //        if(tick % 200 == 0)
 //            target.setPosition(new Vector2((float)Math.random() * Gdx.graphics.getWidth(), (float)Math.random() * Gdx
 //             .graphics.getHeight() ));

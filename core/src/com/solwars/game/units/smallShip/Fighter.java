@@ -17,12 +17,17 @@ public class Fighter extends _sShip {
 
     public Fighter(){
         super();
+
+        maxLinearSpeed = 1000f;
+        maxLinearAcceleration = 500f;
+        maxAngularSpeed = 300f;
+        maxAngularAcceleration = 100f;
+        proximityRange = 600f;
+        initialize();
+
         sprite = new Sprite(ResourcesManager.getInstance().shipFighter);
         sprite.scale(-0.7f);
-        steeringManager.setMaxLinearSpeed(1000f);
-        steeringManager.setMaxLinearAcceleration(500f);
-        steeringManager.setMaxAngularSpeed(400f);
-        steeringManager.setMaxAngularAcceleration(100f);
+
 
 
         // Combat based variables
