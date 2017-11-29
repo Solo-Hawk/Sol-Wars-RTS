@@ -19,7 +19,7 @@ public class Level extends _lDefaultScreen{
 
     OrthographicCamera cam;
 
-    private final boolean DEBUG = true;
+    private final boolean DEBUG = false;
     Label debug = new Label("Debug", ResourcesManager.getInstance().theme);
     ShapeRenderer shapeDebugger = new ShapeRenderer();
 
@@ -59,11 +59,14 @@ public class Level extends _lDefaultScreen{
     public void create(){
         target = new Fighter();
 
-        target.setPosition(new Vector2(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2));;
+        target.setPosition(new Vector2(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2));
+        tTarget = new Fighter();
+        tTarget.setPosition(new Vector2(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2));
+        tTarget.setTarget(target);
 //        Handle limit is around 50,000 Entities
-        for(int x = 0; x < 50; x++){
+        for(int x = 0; x < 100000; x++){
             GameInstance.getInstance().fighters.add(new Fighter());
-            GameInstance.getInstance().fighters.get(x).setTarget(target);
+            GameInstance.getInstance().fighters.get(x).setTarget(tTarget);
             GameInstance.getInstance().fighters.get(x).setPosition(new Vector2((float)Math.random() * Gdx.graphics
                     .getWidth(), (float)Math.random() * Gdx.graphics.getHeight() ));
         }
@@ -75,7 +78,7 @@ public class Level extends _lDefaultScreen{
 
     @Override
     public void render(float delta) {
-        System.out.println(delta);
+        // System.out.println(delta);
         stage.clear();
         Gdx.gl.glClearColor(1f, 1f, 1f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -86,12 +89,14 @@ public class Level extends _lDefaultScreen{
             unit.update(delta);
 
         }
+        tTarget.update(delta);
         if(DEBUG){
             debug();
         }
         stage.draw();
         spriteBatch.begin();
         target.draw(spriteBatch);
+        tTarget.draw(spriteBatch);
         for(Unit unit : GameInstance.getInstance().fighters)
         {
             unit.draw(spriteBatch);

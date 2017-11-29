@@ -23,10 +23,12 @@ public class Fighter extends _sShip {
         maxAngularSpeed = 300f;
         maxAngularAcceleration = 100f;
         proximityRange = 600f;
+        fleeDistance = 100f;
+        maxDistance = 800f;
         initialize();
 
         sprite = new Sprite(ResourcesManager.getInstance().shipFighter);
-        sprite.scale(-0.7f);
+        sprite.scale(-0.85f);
 
 
 

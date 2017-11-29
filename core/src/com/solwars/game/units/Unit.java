@@ -26,6 +26,8 @@ public class Unit{
     protected float maxAngularSpeed;
     protected float maxAngularAcceleration;
     protected float proximityRange;
+    protected float fleeDistance;
+    protected float maxDistance;
     protected SteeringManager steeringManager = new SteeringManager(this);
 
 
@@ -50,6 +52,8 @@ public class Unit{
         steeringManager.setMaxAngularSpeed(maxAngularSpeed);
         steeringManager.setMaxAngularAcceleration(maxAngularAcceleration);
         steeringManager.setProximityRange(proximityRange);
+        steeringManager.setFleeDistance(fleeDistance);
+        steeringManager.setMaxDistance(maxDistance);
     }
 
 //    public void debug(Stage stage, ShapeRenderer shapeDebugger) {

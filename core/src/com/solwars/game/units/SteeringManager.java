@@ -11,7 +11,7 @@ public class SteeringManager {
     protected int movementMode;
     private final int SEEK = 0;
     private final int FLEE = 1;
-    private final int ARIVAL = 2;
+    private final int ARRIVAL = 2;
     private final int WANDER = 3;
     private final int PURSUIT = 4;
     private final int EVADE = 5;
@@ -30,6 +30,8 @@ public class SteeringManager {
     protected float maxAngularAcceleration;
 
     protected float proximityRange;
+    protected float fleeDistance;
+    protected float maxDistance;
     protected float mass;
     protected float scaler;
 
@@ -39,6 +41,14 @@ public class SteeringManager {
 
     public void setProximityRange(float proximityRange){
         this.proximityRange = proximityRange;
+    }
+
+    public void setFleeDistance(float fleeDistance){
+        this.fleeDistance = fleeDistance;
+    }
+
+    public void setMaxDistance(float maxDistance){
+        this.maxDistance = maxDistance;
     }
 
     public void setMaxLinearSpeed(float maxLinearSpeed) {
@@ -71,7 +81,7 @@ public class SteeringManager {
     }
 
     public SteeringManager(Unit unit){
-        movementMode = ARIVAL;
+        movementMode = ARRIVAL;
         desiredVelocity = new Vector2();
         steering = new Vector2();
         position = new Vector2();
@@ -85,7 +95,7 @@ public class SteeringManager {
         switch (movementMode){
             case SEEK    : seek(); break;
             case FLEE    : flee(); break;
-            case ARIVAL  : arival(); break;
+            case ARRIVAL  : arrival(); break;
             case WANDER  : break;
             case PURSUIT : break;
             case EVADE   : break;
@@ -119,15 +129,24 @@ public class SteeringManager {
         linearVelocity.mulAdd(linearVelocity.add(steering), maxLinearAcceleration * delta);
         linearVelocity.limit(maxLinearSpeed * delta);
     }
-    private void arival(){
+    private void arrival(){
         seek();
         float scale;
-        float distance;
-        distance = targetPos.cpy().sub(position).len();
-        scale = (distance - 10) / proximityRange;
+        float d; // distance
+        d = getDistance();
+        scale = (d - 50) / proximityRange;
         scale = scale < 1.0f ? scale : 1.0f;
         linearVelocity.scl(scale);
 
+
+
+    }
+    private void wander(){
+
+
+    }
+    private float getDistance(){
+        return targetPos.cpy().sub(position).len();
 
     }
 }
