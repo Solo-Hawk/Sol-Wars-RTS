@@ -19,7 +19,10 @@ import com.solwars.game.units.smallShip._shipAI;
 public class Unit{
     // Core Variables
     protected Sprite sprite;
-    
+
+    // Mechanic Variables
+    protected Squad;
+
     // Movement based variables
     protected float maxLinearSpeed;
     protected float maxLinearAcceleration;
@@ -28,7 +31,7 @@ public class Unit{
     protected float proximityRange;
     protected float fleeDistance;
     protected float maxDistance;
-    protected SteeringManager steeringManager = new SteeringManager(this);
+    public SteeringManager steeringManager = new SteeringManager(this);
 
 
 
