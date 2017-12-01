@@ -19,14 +19,19 @@ import com.solwars.game.units.smallShip._shipAI;
 public class Unit{
     // Core Variables
     protected Sprite sprite;
-    
+
+    // Mechanic Variables
+    protected Squad;
+
     // Movement based variables
     protected float maxLinearSpeed;
     protected float maxLinearAcceleration;
     protected float maxAngularSpeed;
     protected float maxAngularAcceleration;
     protected float proximityRange;
-    protected SteeringManager steeringManager = new SteeringManager(this);
+    protected float fleeDistance;
+    protected float maxDistance;
+    public SteeringManager steeringManager = new SteeringManager(this);
 
 
 
@@ -50,6 +55,8 @@ public class Unit{
         steeringManager.setMaxAngularSpeed(maxAngularSpeed);
         steeringManager.setMaxAngularAcceleration(maxAngularAcceleration);
         steeringManager.setProximityRange(proximityRange);
+        steeringManager.setFleeDistance(fleeDistance);
+        steeringManager.setMaxDistance(maxDistance);
     }
 
 //    public void debug(Stage stage, ShapeRenderer shapeDebugger) {
