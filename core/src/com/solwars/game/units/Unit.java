@@ -21,7 +21,7 @@ public class Unit{
     protected Sprite sprite;
 
     // Mechanic Variables
-    protected Squad;
+    protected Squad squad = null;
 
     // Movement based variables
     protected float maxLinearSpeed;
@@ -42,6 +42,12 @@ public class Unit{
 
 
     // Combat based variables
+    public final static int SQUADLEADER = 0;
+    public final static int ISLEADER = 1;
+    public final static int THISUNIT = 2;
+    public final static int CLOSETTHRET = 3;
+    public final static int HIGHVALUETARGET = 4;
+    private int targetMode = 0;
     protected Unit target = null;
     protected Vector2 targetPos = null;
 
@@ -116,11 +122,29 @@ public class Unit{
 
 
     public void update(float delta){
+        System.out.println(squad != null);
+        if(squad != null) {
+            if (squad.getLeader() == this) targetMode = ISLEADER;
+            switch (targetMode) {
+                case SQUADLEADER:
+                    System.out.println("Following Leader");
+                    if (squad.getLeader().getTarget() != null) {
+                        steeringManager.update(delta, squad.getLeader());
+                    }
+                    break;
+                case ISLEADER:
+                default:
+                    System.out.println("Is Leader");
+                    if (squad.getLeader().getTarget() != null) {
+                        steeringManager.update(delta, target);
+                    }
+                    break;
 
-        if(target != null){
-            steeringManager.update(delta, target);
-
+            }
         }
+
+
+
 
     }
 
@@ -144,6 +168,10 @@ public class Unit{
 
     public Vector2 getTargetPos(){return target.getPosition();}
 
+    public Squad getSquad(){return this.squad;}
+    public void setSquad(Squad squad){
+        this.squad = squad;
+    }
 }
 
 

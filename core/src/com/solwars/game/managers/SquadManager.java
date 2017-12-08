@@ -23,5 +23,8 @@ public class SquadManager {
         instance = new SquadManager();
         return instance;
     }
+    public void addSquad(Squad squad){
+        squads.add(squad);
+    }
 
 }

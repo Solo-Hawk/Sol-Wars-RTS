@@ -3,6 +3,7 @@ package com.solwars.game.units.smallShip;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.solwars.game.GameInstance;
 import com.solwars.game.ResourcesManager;
 import com.solwars.game.units.Unit;
 
@@ -17,7 +18,7 @@ public class Fighter extends _sShip {
 
     public Fighter(){
         super();
-
+        GameInstance.getInstance().fighters.add(this);
         maxLinearSpeed = 1000f;
         maxLinearAcceleration = 500f;
         maxAngularSpeed = 300f;
@@ -28,7 +29,7 @@ public class Fighter extends _sShip {
         initialize();
 
         sprite = new Sprite(ResourcesManager.getInstance().shipFighter);
-        sprite.scale(-0.95f);
+        sprite.scale(-0.9f);
 
 
 

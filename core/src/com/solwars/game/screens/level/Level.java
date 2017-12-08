@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.solwars.game.ResourcesManager;
 import com.solwars.game.GameInstance;
+import com.solwars.game.units.Squad;
 import com.solwars.game.units.SteeringManager;
 import com.solwars.game.units.Unit;
 import com.solwars.game.units.smallShip.Fighter;
@@ -71,26 +72,29 @@ public class Level extends _lDefaultScreen{
 //            GameInstance.getInstance().fighters.get(x).setPosition(new Vector2((float)Math.random() * Gdx.graphics
 //                    .getWidth(), (float)Math.random() * Gdx.graphics.getHeight() ));
 //        }
-        int squadCount = 400;
-        int squadSize = 300;
-        for(int i = 0; i < squadCount; i++){
-            System.out.println("Squad Number" + i + " " + (i*squadSize));
-            GameInstance.getInstance().fighters.add(new Fighter());
-            GameInstance.getInstance().fighters.get(i * squadSize).setTarget(target);
-            GameInstance.getInstance().fighters.get(i * squadSize).setPosition(new Vector2((float)Math.random() * Gdx.graphics
-                    .getWidth(), (float)Math.random() * Gdx.graphics.getHeight() ));
-            GameInstance.getInstance().fighters.get(i * squadSize).steeringManager.setMovementMode(SteeringManager.SEEK);
-            for(int j = 1; j < squadSize + 1; j++){
-                System.out.println("Squad unit" + j + " " + (i*squadSize + j));
-                GameInstance.getInstance().fighters.add(new Fighter());
-                GameInstance.getInstance().fighters.get(i * squadSize + j).setTarget(GameInstance.getInstance().fighters.get(i * squadSize));
-                GameInstance.getInstance().fighters.get(i * squadSize + j).setPosition(new Vector2((float)Math.random() * Gdx.graphics
-                        .getWidth(), (float)Math.random() * Gdx.graphics.getHeight() ));
-                GameInstance.getInstance().fighters.get(i * squadSize + j).steeringManager.setMovementMode(SteeringManager.ARRIVAL);
+        int squadCount = 2;
+        int squadSize = 10;
+        for(int x = 0; x < squadCount; x++ ) {
+            System.out.println("created squad - " + x );
+            Fighter fighter = new Fighter();
+            fighter.setTarget(target);
+            fighter.setPosition(new Vector2((float) Math.random() * Gdx.graphics
+                    .getWidth(), (float) Math.random() * Gdx.graphics.getHeight()));
+            Squad squad = new Squad(fighter, 0);
+            addFighter(squad, squadSize);
+        }
+        }
 
-            }
+    public void addFighter(Squad squad, int count){
+        for(int x = 0; x < count; x++ ) {
+            Fighter fighter = new Fighter();
+            fighter.setTarget(target);
+            fighter.setPosition(new Vector2((float) Math.random() * Gdx.graphics
+                    .getWidth(), (float) Math.random() * Gdx.graphics.getHeight()));
+            squad.addMember(fighter);
         }
     }
+
     @Override
     public void show() {
 
@@ -98,6 +102,7 @@ public class Level extends _lDefaultScreen{
 
     @Override
     public void render(float delta) {
+        System.out.println("render");
         // System.out.println(delta);
         stage.clear();
         Gdx.gl.glClearColor(1f, 1f, 1f, 1);
@@ -122,6 +127,7 @@ public class Level extends _lDefaultScreen{
 
         tick++;
         GameInstance.getInstance().world.step(1/45f, 6, 2);
+        System.out.println("ENd");
     }
 
 
