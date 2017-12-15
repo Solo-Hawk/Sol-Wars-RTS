@@ -40,8 +40,8 @@ public class SteeringManager {
     protected float maxDistance;
 
     // Decision Making
-    private long lastDecision = System.currentTimeMillis();
-    private long waitTime = 7000;
+    protected long lastDecision = System.currentTimeMillis();
+    protected long waitTime = 7000;
 
     // Wander based variables
     protected float displacement;
@@ -84,6 +84,10 @@ public class SteeringManager {
         this.maxAngularAcceleration = maxAngularAcceleration;
     }
 
+    public void setLinearVelocity(Vector2 linearVelocity){
+        this.linearVelocity = linearVelocity;
+    }
+
 
     public Vector2 getPosition() {
         return position;
@@ -109,18 +113,16 @@ public class SteeringManager {
     public void setMovementMode(int mode){
         movementMode = mode;
     }
+
     public void update(float delta, Unit target){
-        if ((System.currentTimeMillis() - lastDecision) > waitTime){
-            lastDecision = System.currentTimeMillis();
-            movementMode = (int)(Math.random()*3);
-        }
-        targetPos = target.getPosition();
+        if(target != null){targetPos = target.getPosition();}
+
         this.delta = delta;
         switch (movementMode){
             case SEEK    : seek(); break;
             case FLEE    : flee(); break;
-            case ARRIVAL  : arrival(); break;
-            case WANDER  : break;
+            case ARRIVAL : arrival(); break;
+            case WANDER  : wander(); break;
             case PURSUIT : break;
             case EVADE   : break;
             case FOLLOW  : break;

@@ -17,11 +17,18 @@ import com.solwars.game.units.smallShip._shipAI;
  * Created by Student on 18/10/2017.
  */
 public class Unit{
+
+    // Start Variables
+    private Vector2 spawnPos;
+    private Vector2 facing;
+
     // Core Variables
     protected Sprite sprite;
-
+    protected long timeCreated;
+    protected long timeLaunch = 100; // this is a fixed time set to allow the unit to follow its spawn line
     // Mechanic Variables
     protected Squad squad = null;
+    protected int team;
 
     // Movement based variables
     protected float maxLinearSpeed;
@@ -31,7 +38,7 @@ public class Unit{
     protected float proximityRange;
     protected float fleeDistance;
     protected float maxDistance;
-    public SteeringManager steeringManager = new SteeringManager(this);
+    protected SteeringManager steeringManager = null;
 
 
 
@@ -42,6 +49,7 @@ public class Unit{
 
 
     // Combat based variables
+    public final static int NONE = -1;
     public final static int SQUADLEADER = 0;
     public final static int ISLEADER = 1;
     public final static int THISUNIT = 2;
@@ -52,10 +60,25 @@ public class Unit{
     protected Vector2 targetPos = null;
 
 
-    public Unit(){
+    public Unit(int team, Vector2 spawnPos, Vector2 facing){
+        this.team = team;
+        this.spawnPos = spawnPos.cpy();
+        this.facing = facing.cpy();
 
     }
-    public void initialize(){
+    public Unit(int team, Vector2 spawnPos, Vector2 facing, Squad squad){
+        this.team = team;
+        steeringManager.setPosition(spawnPos);
+        steeringManager.setLinearVelocity(facing.cpy().setLength(100f));
+        this.squad = squad;
+        squad.addMember(this);
+    }
+    protected void initialize(){
+        if(steeringManager == null){
+            steeringManager = new SteeringManager(this);
+        }
+        steeringManager.setPosition(spawnPos);
+        steeringManager.setLinearVelocity(facing.cpy().setLength(100f));
         steeringManager.setMaxLinearSpeed(maxLinearSpeed);
         steeringManager.setMaxLinearAcceleration(maxLinearAcceleration);
         steeringManager.setMaxAngularSpeed(maxAngularSpeed);
@@ -120,41 +143,39 @@ public class Unit{
 //        // -------------------------------------------
 //    }
 
-
     public void update(float delta){
-        System.out.println(squad != null);
+
+
+
         if(squad != null) {
             if (squad.getLeader() == this) targetMode = ISLEADER;
             switch (targetMode) {
                 case SQUADLEADER:
-                    System.out.println("Following Leader");
                     if (squad.getLeader().getTarget() != null) {
                         steeringManager.update(delta, squad.getLeader());
                     }
                     break;
                 case ISLEADER:
                 default:
-                    System.out.println("Is Leader");
                     if (squad.getLeader().getTarget() != null) {
                         steeringManager.update(delta, target);
                     }
                     break;
-
             }
+        }else{
+            steeringManager.update(delta, target);
+
         }
-
-
-
-
     }
 
-    public void draw(SpriteBatch batch, Sprite sprite){
-        sprite.setPosition(steeringManager.getPosition().x,steeringManager.getPosition().y);
-        sprite.setRotation(steeringManager.getOrientation());
-        sprite.draw(batch);
-    }
 
-    public void draw(SpriteBatch batch){
+
+    public void draw(SpriteBatch batch, float delta){
+        update(delta);
+
+        this.sprite.setPosition(steeringManager.getPosition().x, steeringManager.getPosition().y);
+        this.sprite.setRotation(steeringManager.getOrientation());
+        this.sprite.draw(batch);
     }
 
     public Vector2 getPosition(){return steeringManager.getPosition();}
@@ -172,6 +193,14 @@ public class Unit{
     public void setSquad(Squad squad){
         this.squad = squad;
     }
+
+    public long getTimeCreated(){return this.timeCreated;}
+    public void setTimeCreated(long timeCreated){this.timeCreated = timeCreated;}
+
+    public Unit getUnit(){
+        return this;
+    }
+
 }
 
 
