@@ -15,6 +15,7 @@ import com.solwars.game.units.Squad;
 import com.solwars.game.units.SteeringManager;
 import com.solwars.game.units.Unit;
 import com.solwars.game.units.smallShip.Fighter;
+import com.solwars.game.units.testing.Target;
 
 public class Level extends _lDefaultScreen{
     int tick = 0;
@@ -31,10 +32,7 @@ public class Level extends _lDefaultScreen{
     SpriteBatch spriteBatch = new SpriteBatch();
 
 
-    Unit target;
-    Unit tTarget;
-
-
+    Unit target = new Target();
 
 
     public Level(Game game){
@@ -58,42 +56,22 @@ public class Level extends _lDefaultScreen{
 
     }
 
-    public void create(){
-        target = new Fighter();
-
-        target.setPosition(new Vector2(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2));
-        tTarget = new Fighter();
-        tTarget.setPosition(new Vector2(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2));
-        tTarget.setTarget(target);
-//        Handle limit is around 50,000 Entities
-//        for(int x = 0; x < 1000; x++){
-//            GameInstance.getInstance().fighters.add(new Fighter());
-//            GameInstance.getInstance().fighters.get(x).setTarget(target);
-//            GameInstance.getInstance().fighters.get(x).setPosition(new Vector2((float)Math.random() * Gdx.graphics
-//                    .getWidth(), (float)Math.random() * Gdx.graphics.getHeight() ));
-//        }
-        int squadCount = 2;
-        int squadSize = 10;
-        for(int x = 0; x < squadCount; x++ ) {
-            System.out.println("created squad - " + x );
-            Fighter fighter = new Fighter();
+    public void create() {
+        int squadCount = 2500;
+        int squadSize = 50;
+        for(int i = 0; i < squadCount; i++){
+            Unit fighter = new Fighter(0,new Vector2((float)Math.random() * Gdx.graphics.getWidth(), (float)Math.random() * Gdx.graphics.getHeight()), new Vector2(0,0)).getUnit();
             fighter.setTarget(target);
-            fighter.setPosition(new Vector2((float) Math.random() * Gdx.graphics
-                    .getWidth(), (float) Math.random() * Gdx.graphics.getHeight()));
-            Squad squad = new Squad(fighter, 0);
-            addFighter(squad, squadSize);
-        }
-        }
-
-    public void addFighter(Squad squad, int count){
-        for(int x = 0; x < count; x++ ) {
-            Fighter fighter = new Fighter();
-            fighter.setTarget(target);
-            fighter.setPosition(new Vector2((float) Math.random() * Gdx.graphics
-                    .getWidth(), (float) Math.random() * Gdx.graphics.getHeight()));
-            squad.addMember(fighter);
+            Squad squad = new Squad(fighter, 0 ).getSquad();
+            for(int j = 0; j < squadSize; j++){
+                fighter = new Fighter(0,new Vector2((float)Math.random() * Gdx.graphics.getWidth(), (float)Math.random() * Gdx.graphics.getHeight()), new Vector2(0,0));    
+                fighter.setTarget(target);
+                squad.addMember(fighter);
+            }
         }
     }
+
+
 
     @Override
     public void show() {
@@ -102,7 +80,6 @@ public class Level extends _lDefaultScreen{
 
     @Override
     public void render(float delta) {
-        System.out.println("render");
         // System.out.println(delta);
         stage.clear();
         Gdx.gl.glClearColor(1f, 1f, 1f, 1);
@@ -115,19 +92,14 @@ public class Level extends _lDefaultScreen{
         stage.draw();
         spriteBatch.begin();
         GameInstance.getInstance().update(spriteBatch, delta);
-        target.draw(spriteBatch);
-        tTarget.update(delta);
-        tTarget.draw(spriteBatch);
         spriteBatch.end();
 //        target.setPosition(new Vector2(Gdx.input.getX(), Gdx.graphics.getHeight() - (Gdx.input.getY() )));
 
-        if(tick % 200 == 0)
-            target.setPosition(new Vector2((float)Math.random() * Gdx.graphics.getWidth(), (float)Math.random() * Gdx
-             .graphics.getHeight() ));
+
 
         tick++;
-        GameInstance.getInstance().world.step(1/45f, 6, 2);
-        System.out.println("ENd");
+//        GameInstance.getInstance().world.step(1/45f, 6, 2);
+//        System.out.println("End");
     }
 
 
