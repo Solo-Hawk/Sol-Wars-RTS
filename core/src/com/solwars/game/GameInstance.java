@@ -14,6 +14,7 @@ public class GameInstance {
     Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
 
     public Array<Unit> fighters = new Array<Unit>();
+    public Array<Unit> targets = new Array<Unit>();
 
     public static GameInstance instance;
 
@@ -36,10 +37,13 @@ public class GameInstance {
 
     }
     public void update(SpriteBatch batch, Float delta){
-
+        for(Unit unit : GameInstance.getInstance().targets)
+        {
+            unit.draw(batch, delta);
+        }
         for(Unit unit : GameInstance.getInstance().fighters)
-        {unit.update(delta);}
-        for(Unit unit : GameInstance.getInstance().fighters)
-        {unit.draw(batch);}
+        {
+            unit.draw(batch, delta);
+        }
     }
 }
