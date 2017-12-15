@@ -46,4 +46,7 @@ public class Squad {
     public float getSqThreat() {
         return sqThreat;
     }
+    public Squad getSquad() {
+        return this;
+    }
 }

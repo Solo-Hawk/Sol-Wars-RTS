@@ -14,12 +14,23 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
  * Loads all resources for the game in a single class
  */
 public class ResourcesManager {
+
     public Skin theme = new Skin(Gdx.files.internal("flat/skin/skin.json"));
 
     public Image gameTitle = new Image(new Texture(Gdx.files.internal("solWars/title.png")));
 
-    public Texture shipBomber = new Texture(Gdx.files.internal("kenney/ships/bomber/Bomber.png"));
-    public Texture shipFighter = new Texture(Gdx.files.internal("kenney/ships/fighter/Fighter.png"));
+
+    private TextureAtlas atlasSmallShips = new TextureAtlas(Gdx.files.internal("packs/smallShip.atlas"));
+
+    public Sprite shipFighter = atlasSmallShips.createSprite("Fighter");
+    public Sprite shipBomber = atlasSmallShips.createSprite("Bomber");
+    public Sprite shipScout = atlasSmallShips.createSprite("Scout");
+    public Sprite shipInterceptor = atlasSmallShips.createSprite("Interceptor");
+
+
+
+
+
 
 
     public static ResourcesManager instance;
@@ -84,6 +95,11 @@ public class ResourcesManager {
     }
     public void init(){
         theme = createBasicSkin();
+
+        this.shipFighter.scale(-0.95f);
+        this.shipBomber.scale(-0.95f);
+        this.shipScout.scale(-0.95f);
+        this.shipInterceptor.scale(-0.95f);
     }
 
 }
