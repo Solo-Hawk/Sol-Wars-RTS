@@ -102,7 +102,7 @@ make this game and whats some of the best ways to start.
 I have since then settled on how I plan to do this and how to start recording all progress made, aiming to not even 
 start making the game but making the menu as a platform of understanding what to use and where to use certain functions
 
-**Stage 1 - Making the Menu **
+**Stage 1 - Making the Menu**
 
 - [x] Main Screen
 - [x] Basic Settings Screen
