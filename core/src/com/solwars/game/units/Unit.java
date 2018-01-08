@@ -201,6 +201,10 @@ public class Unit{
         return this;
     }
 
+    public void setMovementMode(int mode){
+        steeringManager.setMovementMode(mode);
+
+    }
 }
 
 

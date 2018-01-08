@@ -102,7 +102,6 @@ public class SteeringManager {
     }
 
     public SteeringManager(Unit unit){
-        movementMode = ARRIVAL;
         desiredVelocity = new Vector2();
         steering = new Vector2();
         position = new Vector2();
@@ -132,11 +131,24 @@ public class SteeringManager {
     }
 
     private void seek() {
-        desiredVelocity = new Vector2(targetPos.x, targetPos.y);
+        if(false){
+           desiredVelocity = targetPos.cpy();
+           desiredVelocity.sub(position);
+           desiredVelocity.nor();
+           desiredVelocity.scl(maxLinearSpeed);
+           steering = desiredVelocity.cpy().sub(linearVelocity);
+        }
+
+
+
+
+
+
+        desiredVelocity = targetPos.cpy();
         desiredVelocity.sub(position);
         desiredVelocity.nor();
         desiredVelocity.scl(maxLinearSpeed * delta);
-        steering = desiredVelocity.cpy().sub(linearVelocity);
+        steering = desiredVelocity.cpy().sub(linearVelocity.cpy().scl(delta));
         steering = steering.mulAdd(steering, maxAngularAcceleration * delta);
         steering.limit(maxAngularSpeed * delta);
         linearVelocity.mulAdd(linearVelocity.add(steering), maxLinearAcceleration * delta);
@@ -144,7 +156,7 @@ public class SteeringManager {
     }
 
     private void flee(){
-        desiredVelocity = new Vector2(targetPos.x, targetPos.y);
+        desiredVelocity = targetPos.cpy();
         desiredVelocity.sub(position);
         desiredVelocity.nor();
         desiredVelocity.scl(maxLinearSpeed * delta);

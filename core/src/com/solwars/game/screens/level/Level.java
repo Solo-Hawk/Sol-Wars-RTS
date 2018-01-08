@@ -57,8 +57,8 @@ public class Level extends _lDefaultScreen{
     }
 
     public void create() {
-        int squadCount = 2500;
-        int squadSize = 50;
+        int squadCount = 5;
+        int squadSize = 3;
         for(int i = 0; i < squadCount; i++){
             Unit fighter = new Fighter(0,new Vector2((float)Math.random() * Gdx.graphics.getWidth(), (float)Math.random() * Gdx.graphics.getHeight()), new Vector2(0,0)).getUnit();
             fighter.setTarget(target);
@@ -66,6 +66,7 @@ public class Level extends _lDefaultScreen{
             for(int j = 0; j < squadSize; j++){
                 fighter = new Fighter(0,new Vector2((float)Math.random() * Gdx.graphics.getWidth(), (float)Math.random() * Gdx.graphics.getHeight()), new Vector2(0,0));    
                 fighter.setTarget(target);
+                fighter.setMovementMode(SteeringManager.ARRIVAL);
                 squad.addMember(fighter);
             }
         }

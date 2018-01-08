@@ -34,13 +34,13 @@ public class Fighter extends _sShip {
 
 //        System.out.println("unit is initialized with size of " + sprite.getScaleX() + " " + sprite.getScaleY());
 
-        maxLinearSpeed = 1000f;
-        maxLinearAcceleration = 500f;
-        maxAngularSpeed = 300f;
-        maxAngularAcceleration = 100f;
-        proximityRange = 900f;
-        fleeDistance = 100f;
-        maxDistance = 800f;
+        maxLinearSpeed = 250f;
+        maxLinearAcceleration = 125f;
+        maxAngularSpeed = 75f;
+        maxAngularAcceleration = 25f;
+        proximityRange = 450f;
+        fleeDistance = 50f;
+        maxDistance = 400f;
         // Combat based variables
         target = null;
         targetPos = null;

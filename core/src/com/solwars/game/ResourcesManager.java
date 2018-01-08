@@ -96,10 +96,10 @@ public class ResourcesManager {
     public void init(){
         theme = createBasicSkin();
 
-        this.shipFighter.scale(-0.95f);
-        this.shipBomber.scale(-0.95f);
-        this.shipScout.scale(-0.95f);
-        this.shipInterceptor.scale(-0.95f);
+        this.shipFighter.scale(-0.9f);
+        this.shipBomber.scale(-0.9f);
+        this.shipScout.scale(-0.9f);
+        this.shipInterceptor.scale(-0.9f);
     }
 
 }

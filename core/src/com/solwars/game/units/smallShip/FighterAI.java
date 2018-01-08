@@ -9,13 +9,10 @@ public class FighterAI extends _shipAI {
 
     public FighterAI(Unit unit){
         super(unit);
-
+        setMovementMode(SEEK);
     }
     public void update(float delta, Unit target){
-        if ((System.currentTimeMillis() - lastDecision) > waitTime){
-            lastDecision = System.currentTimeMillis();
-            setMovementMode((int)(Math.random()*3));
-        }
+
         super.update(delta, target);
     }
 
