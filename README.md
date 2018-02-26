@@ -130,6 +130,8 @@ game with limited resources)
 
 This planing was reflecting into a Gantt Chart.
 
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/EPQ/images/EPQ/EPQ%20-%20Gantt.png?raw=true)
+
 # Development Process
 
 So I made the plan, I listed out what I needed to do, look at and research to make this game, to me it felt easy and very simple.
@@ -224,6 +226,8 @@ Following this change the need to cut down the todo list happened and some modif
 - [ ] Finalise Steering Model and functional code - 20 Days
 
  **Second Gantt Here**
+ 
+ ![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/EPQ/images/EPQ/EPQ%20-%20Gantt%202.png?raw=true)
 ***
 ## Nov 7 2017
 https://github.com/Solo-Hawk/Sol-Wars-RTS/tree/3ca6757ba81db6691403169c2b1e479d3c38a226  
@@ -291,7 +295,7 @@ In order to best display my project without the need to do any complicated setup
 
 Downloading the finished programme is also possible (Requires Java JRE 8 / JRE 9 - **may cause errors** )
 
-[Download]()
+[Download](https://github.com/Solo-Hawk/Sol-Wars-RTS/wiki/Setup-Guide)
 
 # Evaluation
 
