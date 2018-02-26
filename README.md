@@ -121,7 +121,7 @@ upon. This will help build the game further
 - [ ] Create or find someone to outsource art work for the game (Not sure what kind of style I want yet but I have a
 few ideas)
 
-**Stage 5 - Improvements and Explorable Features** - 10 Days +
+**Stage 5 - Improvements and Explorable Features** - 10+ Days
 
 - [ ] Squading System (A twist on control groups to multi task)
 - [ ] Wave Mode (A game mode where you create waves that spawn every 1-3 minutes to have a gradully increasing paced
@@ -130,7 +130,11 @@ game with limited resources)
 
 This planing was reflecting into a Gantt Chart.
 
-![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/EPQ/images/EPQ/EPQ%20-%20Gantt.png?raw=true)
+https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/EPQ/images/EPQ/EPQ%20-%20Gantt.png?raw=true
+
+![https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/EPQ/images/EPQ/EPQ%20-%20Gantt.png?raw=true](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/EPQ/images/EPQ/EPQ%20-%20Gantt.png?raw=true)
+
+
 
 # Development Process
 
@@ -227,7 +231,8 @@ Following this change the need to cut down the todo list happened and some modif
 
  **Second Gantt Here**
  
- ![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/EPQ/images/EPQ/EPQ%20-%20Gantt%202.png?raw=true)
+ https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/EPQ/images/EPQ/EPQ%20-%20Gantt%202.png?raw=true
+ ![https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/EPQ/images/EPQ/EPQ%20-%20Gantt%202.png?raw=true](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/EPQ/images/EPQ/EPQ%20-%20Gantt%202.png?raw=true)
 ***
 ## Nov 7 2017
 https://github.com/Solo-Hawk/Sol-Wars-RTS/tree/3ca6757ba81db6691403169c2b1e479d3c38a226  
