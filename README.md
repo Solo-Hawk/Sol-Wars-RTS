@@ -1,4 +1,4 @@
-# EPQ Branch
+# EPQ Branch - https://github.com/Solo-Hawk/Sol-Wars-RTS/tree/EPQ
 
 # Investigation into Steering Behaviours in LibGDX - Java
 
@@ -285,16 +285,24 @@ The Final Product is a demonstration of what I created using LibGDX, AI Steering
 For the purpose of printed out documentation, screenshots are used to show my work in basic form to prove that it worked and that I created something that is real. 
 The following screenshots show the basic development of Following Movement Behaviour (Sprite A goes to Sprite B)
 
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/EPQ/images/EPQ/SS%20Demo%20One.png?raw=true)
+
+This was within the first stages of development, getting the simple stage of models working, movement at a basic level. Green Lines indicated the current facing and Red is the intended direction
+
+![](https://github.com/Solo-Hawk/Sol-Wars-RTS/blob/EPQ/images/EPQ/SS%20Demo%20Two.png?raw=true)
+
+This is me improving my code, being able to handle more entities at a smaller level has some interesting effects and helped me understand the scale of my code
+
 ## Video Demo
 
 In order to best display my project without the need to do any complicated setup for the user I recorded a simple video demo, this is going through all the experimentation and the outcome of my Steering Behaviour Model, all my work led to a 3 Minute Video showing the first stage of where I actually had a visual product as a lot was reach that stage for 2/3rds of the development.
-
+https://www.youtube.com/watch?v=HXI8r1umqlQ
 [Video](https://www.youtube.com/watch?v=HXI8r1umqlQ)
 
 ## Compiled Application
 
 Downloading the finished programme is also possible (Requires Java JRE 8 / JRE 9 - **may cause errors** )
-
+https://github.com/Solo-Hawk/Sol-Wars-RTS/wiki/Setup-Guide
 [Download](https://github.com/Solo-Hawk/Sol-Wars-RTS/wiki/Setup-Guide)
 
 # Evaluation
